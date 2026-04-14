@@ -168,7 +168,7 @@
 <div class="landing" id="landingPage">
   <div class="landing-bg" id="landingBg"></div>
   <div class="landing-content">
-    <img src="logo (3).png" alt="Aqua Resort" class="landing-logo" id="landingLogo">
+    <img src="logo.png" alt="Aqua Resort" class="landing-logo" id="landingLogo">
     <div class="landing-title">Aqua Resort Package</div>
     <div class="landing-subtitle" id="landingSubtitle">Choisissez votre langue · Choose your language</div>
     <div class="lang-choice">
@@ -186,7 +186,7 @@
         <h1 id="appTitle">🏖️ Aqua Resort – Package d'équipement</h1>
         <p id="appSubtitle">Formulaire de commande des articles pour votre appartement</p>
       </div>
-      <img src="logo (3).png" alt="Aqua Resort" class="header-logo"
+      <img src="logo.png" alt="Aqua Resort" class="header-logo"
            onerror="this.style.display='none';">
     </header>
 
@@ -1066,9 +1066,9 @@ function submitForm() {
 // Try to set landing background
 (function(){
   const img = new Image();
-  img.onload = () => { document.getElementById('landingBg').style.backgroundImage = `url('aqua resort (37).jpg')`; };
+  img.onload = () => { document.getElementById('landingBg').style.backgroundImage = `url('aqua-bg.jpg')`; };
   img.onerror = () => { document.getElementById('landingBg').classList.add('landing-bg-fallback'); };
-  img.src = 'aqua resort (37).jpg';
+  img.src = 'aqua-bg.jpg';
 })();
 
 // If URL has lang, auto-start
