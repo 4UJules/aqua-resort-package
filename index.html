@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aqua Resort – Equipment Package / Package d'équipement</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; background: #0a1420; color: #1e293b; line-height: 1.5; min-height: 100vh; }
+
+  /* ===== LANDING ===== */
+  .landing { min-height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; background: #0a1420; }
+  .landing-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .55; filter: brightness(.75); z-index: 0; }
+  .landing-bg-fallback { background: linear-gradient(135deg, #0e7490 0%, #164e63 50%, #0a1420 100%); }
+  .landing-content { position: relative; z-index: 1; max-width: 720px; }
+  .landing-logo { height: 160px; margin-bottom: 24px; filter: drop-shadow(0 6px 24px rgba(0,0,0,.5)); }
+  .landing-logo-fallback { font-family: "Trebuchet MS", Arial, sans-serif; font-size: 72px; font-weight: 300; letter-spacing: 14px; color: #7eb5b8; text-shadow: 0 4px 20px rgba(0,0,0,.5); margin-bottom: 8px; }
+  .landing-logo-sub { color: #7eb5b8; letter-spacing: 6px; font-size: 15px; margin-bottom: 30px; }
+  .landing-title { color: white; font-size: 32px; font-weight: 300; letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .landing-subtitle { color: #cbd5e1; font-size: 16px; margin-bottom: 40px; font-weight: 300; }
+  .lang-choice { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .lang-btn { background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.4); color: white; padding: 16px 36px; border-radius: 8px; font-size: 17px; font-weight: 500; cursor: pointer; transition: all .2s; backdrop-filter: blur(8px); font-family: inherit; min-width: 180px; }
+  .lang-btn:hover { background: rgba(126,181,184,.3); border-color: #7eb5b8; transform: translateY(-2px); }
+  .lang-flag { font-size: 22px; margin-right: 10px; }
+
+  /* ===== APP ===== */
+  .app { display: none; background: linear-gradient(135deg,#e0f2fe 0%,#dbeafe 100%); min-height: 100vh; }
+  .app.visible { display: block; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px 16px; }
+  .app-body { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+  .main-col { min-width: 0; }
+  .sidebar { position: sticky; top: 20px; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(15,23,42,.08); border: 1px solid #e2e8f0; }
+  .sidebar h3 { font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; font-weight: 700; }
+  .sidebar .line { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; align-items: center; }
+  .sidebar .line.active { color: #0369a1; font-weight: 700; background: #f0f9ff; margin: 0 -12px; padding: 10px 12px; border-radius: 6px; border-bottom: 1px solid transparent; }
+  .sidebar .line-label { color: #475569; }
+  .sidebar .line-amount { font-variant-numeric: tabular-nums; font-weight: 600; color: #0f172a; }
+  .sidebar .line.active .line-label, .sidebar .line.active .line-amount { color: #0369a1; }
+  .sidebar .total-row { display: flex; justify-content: space-between; padding: 14px 0 8px; border-top: 2px solid #0369a1; margin-top: 8px; }
+  .sidebar .total-row .t-label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: .4px; font-weight: 700; }
+  .sidebar .total-row .t-amount { font-size: 22px; font-weight: 800; color: #0369a1; font-variant-numeric: tabular-nums; }
+  .sidebar .nav-sidebar { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .sidebar .nav-sidebar .btn { width: 100%; }
+  .subcat-title { font-size: 13px; color: #0369a1; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-top: 22px; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 2px solid #e0f2fe; }
+  .subcat-title:first-of-type { margin-top: 10px; }
+  .submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .submit-text { flex: 1; min-width: 240px; }
+  .btn-xl { font-size: 17px; font-weight: 700; padding: 16px 28px; box-shadow: 0 6px 18px rgba(16,185,129,.35); letter-spacing: .3px; }
+  .btn-xl:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(16,185,129,.45); }
+  .ty-screen { text-align: center; padding: 40px 30px; background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 100%); border-radius: 16px; border: 2px solid #10b981; margin-top: 10px; animation: fadein .6s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .ty-icon { font-size: 64px; margin-bottom: 10px; animation: pop .5s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+  .ty-title { color: #059669; font-size: 28px; margin: 10px 0 14px; }
+  .ty-text { font-size: 16px; color: #334155; margin-bottom: 24px; line-height: 1.6; }
+  .ty-summary { background: white; border-radius: 10px; padding: 18px 22px; margin: 20px auto; max-width: 480px; text-align: left; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+  .ty-summary-title { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: #64748b; font-weight: 700; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+  .ty-summary-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: #475569; }
+  .ty-summary-total { border-top: 2px solid #0369a1; margin-top: 8px; padding-top: 12px; font-weight: 800; color: #0369a1; font-size: 18px; }
+  .send-status { margin-top: 20px; padding: 12px 18px; border-radius: 8px; font-weight: 600; font-size: 14px; display: inline-block; background: #f1f5f9; color: #475569; }
+  .send-status.ok { background: #d1fae5; color: #065f46; }
+  .send-status.ko { background: #fee2e2; color: #991b1b; }
+  .email-fallback { margin-top: 24px; padding: 18px; background: white; border-radius: 10px; border: 1px dashed #cbd5e1; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .email-fallback h4 { font-size: 14px; color: #0369a1; margin-bottom: 8px; }
+  .email-fallback p { font-size: 13px; color: #64748b; margin-bottom: 12px; }
+  header.app-header { background: #0369a1; color: white; padding: 20px 24px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  header.app-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  header.app-header p { opacity: 0.9; font-size: 13px; }
+  .header-logo { height: 44px; }
+  .steps { display: flex; justify-content: space-between; background: white; padding: 14px 20px; border-bottom: 1px solid #e2e8f0; }
+  .step-item { flex: 1; text-align: center; position: relative; padding: 0 4px; }
+  .step-item::after { content: ''; position: absolute; top: 14px; right: -50%; width: 100%; height: 2px; background: #e2e8f0; z-index: 0; }
+  .step-item:last-child::after { display: none; }
+  .step-circle { width: 28px; height: 28px; border-radius: 50%; background: #e2e8f0; color: #64748b; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; position: relative; z-index: 1; }
+  .step-item.active .step-circle { background: #0369a1; color: white; }
+  .step-item.done .step-circle { background: #10b981; color: white; }
+  .step-item.done::after { background: #10b981; }
+  .step-label { font-size: 11px; margin-top: 4px; color: #64748b; font-weight: 500; }
+  .step-item.active .step-label { color: #0369a1; font-weight: 700; }
+  main { background: white; padding: 32px; min-height: 400px; }
+  .page { display: none; }
+  .page.active { display: block; animation: fade .25s; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  h2 { font-size: 20px; color: #0369a1; margin-bottom: 8px; }
+  .sub { color: #64748b; font-size: 14px; margin-bottom: 20px; }
+  label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; margin-top: 12px; }
+  input[type=text], input[type=email], select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; font-family: inherit; }
+  input:focus, select:focus { outline: none; border-color: #0369a1; box-shadow: 0 0 0 3px rgba(3,105,161,.12); }
+  input:read-only { background: #f1f5f9; color: #475569; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th { text-align: left; font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .4px; padding: 10px 8px; border-bottom: 2px solid #e2e8f0; background: #f8fafc; }
+  td { padding: 10px 8px; border-bottom: 1px solid #f1f5f9; font-size: 14px; vertical-align: middle; }
+  tr:hover td { background: #fafbfc; }
+  .art-name { font-weight: 500; }
+  .mandatory-tag { font-size: 10px; background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
+  .opt-tag { font-size: 10px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
+  .qty-input { width: 60px; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; text-align: center; font-size: 14px; }
+  .qty-input:disabled { background: #f1f5f9; color: #64748b; }
+  .price { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
+  .total { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; color: #0369a1; }
+  .checkbox { width: 18px; height: 18px; accent-color: #0369a1; cursor: pointer; }
+  .totals-bar { margin-top: 20px; padding: 16px 20px; background: linear-gradient(135deg,#0369a1 0%,#0284c7 100%); color: white; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .totals-bar .label-sum { font-size: 13px; opacity: .9; }
+  .totals-bar .amount { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .totals-bar .breakdown { font-size: 12px; opacity: .85; margin-top: 2px; }
+  .nav { display: flex; justify-content: space-between; margin-top: 24px; gap: 12px; flex-wrap: wrap; }
+  .btn { padding: 12px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; font-family: inherit; }
+  .btn-primary { background: #0369a1; color: white; }
+  .btn-primary:hover { background: #075985; }
+  .btn-secondary { background: #e2e8f0; color: #334155; }
+  .btn-secondary:hover { background: #cbd5e1; }
+  .btn-success { background: #10b981; color: white; }
+  .btn-success:hover { background: #059669; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .section-box { background: #f8fafc; border-left: 4px solid #0369a1; padding: 14px 16px; border-radius: 6px; margin-bottom: 16px; }
+  .section-box.mandatory { border-left-color: #10b981; background: #f0fdf4; }
+  .section-box.optional { border-left-color: #f59e0b; background: #fffbeb; }
+  .section-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .section-desc { font-size: 13px; color: #64748b; }
+  .buy-yourself-list { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+  .buy-yourself-list h3 { color: #991b1b; font-size: 15px; margin-bottom: 10px; }
+  .buy-yourself-list ul { list-style: none; }
+  .buy-yourself-list li { padding: 6px 0; font-size: 14px; color: #7f1d1d; border-bottom: 1px dashed #fecaca; }
+  .buy-yourself-list li:last-child { border: 0; }
+  .buy-yourself-list .btn-print { margin-top: 12px; background: #991b1b; color: white; }
+  .buy-yourself-list .btn-print:hover { background: #7f1d1d; }
+  .recap-table { width: 100%; margin-top: 16px; }
+  .recap-table td { padding: 8px; border-bottom: 1px solid #f1f5f9; }
+  .recap-table .recap-cat { font-weight: 700; background: #f1f5f9; color: #0369a1; }
+  .submit-block { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 20px; margin-top: 20px; text-align: center; }
+  .submit-block p { margin-bottom: 14px; font-size: 14px; color: #0c4a6e; }
+  .copy-area { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: monospace; font-size: 12px; height: 80px; margin-top: 10px; resize: none; background: #f8fafc; }
+  .warning { background: #fef3c7; border: 1px solid #fcd34d; color: #92400e; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin: 10px 0; }
+  .running-total { position: fixed; bottom: 16px; right: 16px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,.15); border-radius: 12px; padding: 12px 18px; border: 2px solid #0369a1; font-weight: 700; font-size: 16px; z-index: 100; }
+  .running-total small { display: block; font-size: 11px; color: #64748b; font-weight: 500; }
+  .switch-lang { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; backdrop-filter: blur(8px); font-family: inherit; }
+
+  @media print {
+    body { background: white !important; }
+    .landing, header.app-header, .steps, .nav, .totals-bar, .submit-block, .running-total, .switch-lang, .section-box { display: none !important; }
+    main { padding: 0; }
+    .page { display: block !important; }
+    .buy-yourself-list .btn-print { display: none; }
+    .buy-yourself-list { border: 2px solid #000; background: white; }
+    .buy-yourself-list h3 { color: #000; }
+    .buy-yourself-list li { color: #000; }
+    #recapContainer, .page[data-page="0"], .page[data-page="1"], .page[data-page="2"], .page[data-page="3"], .page[data-page="4"] { display: none !important; }
+  }
+  @media (max-width: 1000px) {
+    .app-body { grid-template-columns: 1fr; }
+    .sidebar { position: static; order: 2; }
+  }
+  @media (max-width: 640px) {
+    main { padding: 20px 16px; }
+    .step-label { display: none; }
+    th, td { padding: 6px 4px; font-size: 13px; }
+    .running-total { bottom: 8px; right: 8px; font-size: 14px; padding: 8px 12px; }
+    .landing-logo { height: 120px; }
+    .landing-title { font-size: 24px; }
+    header.app-header h1 { font-size: 18px; }
+    .header-logo { height: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== LANDING PAGE ====== -->
+<div class="landing" id="landingPage">
+  <div class="landing-bg" id="landingBg"></div>
+  <div class="landing-content">
+    <img src="logo (3).png" alt="Aqua Resort" class="landing-logo" id="landingLogo">
+    <div class="landing-title">Aqua Resort Package</div>
+    <div class="landing-subtitle" id="landingSubtitle">Choisissez votre langue · Choose your language</div>
+    <div class="lang-choice">
+      <button class="lang-btn" onclick="startApp('fr')"><span class="lang-flag">🇫🇷</span>Français</button>
+      <button class="lang-btn" onclick="startApp('en')"><span class="lang-flag">🇬🇧</span>English</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== APP ====== -->
+<div class="app" id="appMain">
+  <div class="container">
+    <header class="app-header">
+      <div>
+        <h1 id="appTitle">🏖️ Aqua Resort – Package d'équipement</h1>
+        <p id="appSubtitle">Formulaire de commande des articles pour votre appartement</p>
+      </div>
+      <img src="logo (3).png" alt="Aqua Resort" class="header-logo"
+           onerror="this.style.display='none';">
+    </header>
+
+    <div class="steps" id="stepsBar"></div>
+
+    <div class="app-body">
+    <div class="main-col">
+    <main>
+      <!-- PAGE 0 : identification -->
+      <div class="page active" data-page="0">
+        <h2 data-t="page0_title">Votre appartement</h2>
+        <p class="sub" data-t="page0_sub">Merci de vérifier vos informations pour commencer.</p>
+        <label data-t="lbl_apart">N° d'appartement</label>
+        <input type="text" id="apartId" placeholder="Ex : A101" required>
+        <label data-t="lbl_type">Type d'appartement</label>
+        <select id="apartType">
+          <option value="" data-t="opt_choose">-- Choisir --</option>
+          <option value="Studio">Studio</option>
+          <option value="1Ch" data-t="opt_1ch">1 Chambre</option>
+          <option value="2Ch" data-t="opt_2ch">2 Chambres</option>
+          <option value="3Ch" data-t="opt_3ch">3 Chambres</option>
+        </select>
+        <label data-t="lbl_name">Nom complet</label>
+        <input type="text" id="clientName" placeholder="Prénom Nom">
+        <label data-t="lbl_email">Email</label>
+        <input type="email" id="clientEmail" placeholder="exemple@email.com">
+        <div class="warning" data-t="page0_warn">
+          ℹ️ Ce formulaire vous présente la liste des articles à équiper votre appartement,
+          conformément au contrat de management. Les articles obligatoires (vert) sont achetés par la gestion.
+          Les articles optionnels (orange) peuvent être cochés si vous souhaitez que la gestion les achète
+          pour vous — sinon, vous devrez les acheter vous-même.
+        </div>
+      </div>
+
+      <div class="page" data-page="1">
+        <h2>🍴 <span data-t="step_cuisine_title">Étape 1 — Cuisine</span></h2>
+        <p class="sub" data-t="step_cuisine_sub">Articles obligatoires fournis par la gestion pour votre cuisine.</p>
+        <div class="section-box mandatory">
+          <div class="section-title" data-t="pkg_mandatory">Package obligatoire</div>
+          <div class="section-desc" data-t="pkg_mandatory_desc">Ces articles sont inclus dans votre contrat. Les quantités sont adaptées à votre type d'appartement.</div>
+        </div>
+        <table id="tableCuisine"></table>
+      </div>
+
+      <div class="page" data-page="2">
+        <h2>🛁 <span data-t="step_sdb_title">Étape 2 — Salle de bain</span></h2>
+        <p class="sub" data-t="step_sdb_sub">Articles obligatoires pour équiper votre salle de bain.</p>
+        <div class="section-box mandatory">
+          <div class="section-title" data-t="pkg_mandatory">Package obligatoire</div>
+          <div class="section-desc" data-t="pkg_mandatory_desc2">Articles achetés par la gestion pour vous.</div>
+        </div>
+        <table id="tableSdb"></table>
+      </div>
+
+      <div class="page" data-page="3">
+        <h2>🧹 <span data-t="step_menage_title">Étape 3 — Ménage</span></h2>
+        <p class="sub" data-t="step_menage_sub">Articles d'entretien obligatoires.</p>
+        <div class="section-box mandatory">
+          <div class="section-title" data-t="pkg_mandatory">Package obligatoire</div>
+          <div class="section-desc" data-t="pkg_mandatory_desc2">Articles achetés par la gestion pour vous.</div>
+        </div>
+        <table id="tableMenage"></table>
+      </div>
+
+      <div class="page" data-page="4">
+        <h2>✨ <span data-t="step_opt_title">Étape 4 — Options (électroménager)</span></h2>
+        <p class="sub" data-t="step_opt_sub">Articles optionnels. Cochez ceux que vous souhaitez que la gestion achète pour vous.</p>
+        <div class="section-box optional">
+          <div class="section-title" data-t="pkg_optional">Package optionnel</div>
+          <div class="section-desc" data-t="pkg_optional_desc">Pour chaque article : cochez si vous voulez que la société achète pour vous (ajouté à votre facture). Ne cochez pas si vous préférez l'acheter vous-même — il apparaîtra dans la liste récap.</div>
+        </div>
+        <table id="tableOpt"></table>
+      </div>
+
+      <div class="page" data-page="5">
+        <h2>📋 <span data-t="recap_title">Récapitulatif de votre commande</span></h2>
+        <p class="sub" data-t="recap_sub">Vérifiez puis validez votre commande.</p>
+        <div id="recapContainer"></div>
+        <div class="buy-yourself-list" id="buyYourselfBlock" style="display:none;">
+          <h3 data-t="buy_title">🛍️ À acheter par vos soins</h3>
+          <p style="font-size:13px; margin-bottom: 10px; color:#7f1d1d;" data-t="buy_desc">Vous n'avez pas coché ces articles — vous devrez donc les acheter vous-même pour votre appartement :</p>
+          <ul id="buyYourselfList"></ul>
+          <button class="btn btn-print" onclick="printBuyList()" data-t="btn_print">🖨️ Imprimer cette liste</button>
+        </div>
+        <div class="totals-bar" id="finalTotalsBar" style="display:none;">
+          <div>
+            <div class="label-sum" data-t="total_label">MONTANT TOTAL À PAYER À LA GESTION</div>
+            <div class="breakdown" id="finalBreakdown"></div>
+          </div>
+          <div class="amount" id="finalTotal">$0.00</div>
+        </div>
+        <div class="submit-block">
+          <p><b data-t="submit_label">Validation :</b> <span data-t="submit_desc">Cliquez ci-dessous pour envoyer votre commande à la gestion.</span></p>
+          <div id="afterSubmit" style="display:none;"></div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn-secondary" id="btnPrev" onclick="goPrev()" data-t="btn_prev">← Précédent</button>
+        <button class="btn btn-primary" id="btnNext" onclick="goNext()" data-t="btn_next">Suivant →</button>
+      </div>
+    </main>
+    </div><!-- /main-col -->
+
+    <aside class="sidebar" id="sidebarTotal">
+      <h3 data-t="sidebar_title">💰 Récapitulatif</h3>
+      <div class="line" id="line-cuisine">
+        <span class="line-label" data-t="sb_cuisine">Package Vaisselle</span>
+        <span class="line-amount" id="amt-vaisselle">$0.00</span>
+      </div>
+      <div class="line" id="line-sdb">
+        <span class="line-label" data-t="sb_sdb">Salle de bain</span>
+        <span class="line-amount" id="amt-sdb">$0.00</span>
+      </div>
+      <div class="line" id="line-menage">
+        <span class="line-label" data-t="sb_menage">Ménage</span>
+        <span class="line-amount" id="amt-menage">$0.00</span>
+      </div>
+      <div class="line" id="line-options">
+        <span class="line-label" data-t="sb_options">Options</span>
+        <span class="line-amount" id="amt-options">$0.00</span>
+      </div>
+      <div class="total-row">
+        <span class="t-label" data-t="sb_total">TOTAL</span>
+        <span class="t-amount" id="amt-total">$0.00</span>
+      </div>
+      <div class="sb-breakdown" id="sbBreakdown" style="display:none; font-size:11px; color:#64748b; margin-top:4px; text-align:right; line-height:1.5;"></div>
+      <div class="nav-sidebar">
+        <button class="btn btn-primary" id="btnNextSide" onclick="goNext()" data-t="btn_next">Suivant →</button>
+        <button class="btn btn-success btn-xl" id="btnSubmitSide" onclick="handleSubmitClick()" style="display:none;">✅ Valider ma commande</button>
+      </div>
+    </aside>
+    </div><!-- /app-body -->
+
+  </div>
+  <button class="switch-lang" onclick="location.reload()" data-t="btn_switch_lang">🌐 Change language</button>
+</div>
+
+<script>
+// ================= DEBUG ON-PAGE =================
+window.addEventListener('error', function(ev) {
+  const bar = document.createElement('div');
+  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#991b1b;color:white;padding:10px;z-index:99999;font-size:13px;font-family:monospace;white-space:pre-wrap;border-bottom:3px solid #fca5a5;';
+  bar.textContent = 'JS ERROR: ' + (ev.message || '') + '\nFile: ' + (ev.filename || '') + '\nLine: ' + (ev.lineno || '');
+  document.body && document.body.appendChild(bar);
+});
+// ================= CONFIG =================
+// URL de votre Google Apps Script (Web App) pour recevoir les commandes automatiquement.
+// Si vide, le formulaire bascule en mode email.
+// Exemple : "https://script.google.com/macros/s/AKfycb.../exec"
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbycgAxF5QayHcsjoQekLMVabL6HgOruiBbOmnWjc2a4MghAcDK_ptZ9kb1Z14Va0T6y/exec";
+const MANAGEMENT_EMAIL = "villaturquoze@yahoo.fr";
+
+// ================= DATA =================
+const ARTICLES = [{"id": "ART001", "package": "Vaisselle", "cat": "Cuisine", "name": "epluche legume", "price": 6, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART002", "package": "Vaisselle", "cat": "Cuisine", "name": "ouvre boite", "price": 6, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART003", "package": "Vaisselle", "cat": "Cuisine", "name": "Ustensiles", "price": 15, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART004", "package": "Vaisselle", "cat": "Cuisine", "name": "couteau de cuisine", "price": 35, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART005", "package": "Vaisselle", "cat": "Cuisine", "name": "couteau à steak", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART006", "package": "Vaisselle", "cat": "Cuisine", "name": "set de table", "price": 15, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART007", "package": "Vaisselle", "cat": "Cuisine", "name": "planche a découper", "price": 12, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART008", "package": "Vaisselle", "cat": "Cuisine", "name": "distributeur produit vaiselle/lave main", "price": 30, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART009", "package": "Vaisselle", "cat": "Cuisine", "name": "saldier GM", "price": 25, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 2}, "mandatory": true}, {"id": "ART010", "package": "Vaisselle", "cat": "Cuisine", "name": "saladier MM", "price": 20, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 2}, "mandatory": true}, {"id": "ART011", "package": "Vaisselle", "cat": "Cuisine", "name": "presse ail", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART012", "package": "Vaisselle", "cat": "Cuisine", "name": "torchon vaisselle", "price": 5, "qty": {"Studio": 4, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART013", "package": "Vaisselle", "cat": "Cuisine", "name": "couverts à salade", "price": 8, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART014", "package": "Vaisselle", "cat": "Cuisine", "name": "cuillere à dessert cuillere fourchette couteau set de 4", "price": 50, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART015", "package": "Vaisselle", "cat": "Cuisine", "name": "passoire", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART016", "package": "Vaisselle", "cat": "Cuisine", "name": "range couvert", "price": 35, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART017", "package": "Vaisselle", "cat": "Cuisine", "name": "poubelle de cuisine sous évier", "price": 25, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART018", "package": "Vaisselle", "cat": "Cuisine", "name": "organiseur produits entretien sous évier", "price": 20, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART019", "package": "Vaisselle", "cat": "Cuisine", "name": "Set Poéle Induction petite moyenne grande", "price": 90, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART020", "package": "Vaisselle", "cat": "Cuisine", "name": "Set de 3 casseroles induction", "price": 45, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART021", "package": "Vaisselle", "cat": "Cuisine", "name": "plat four", "price": 55, "qty": {"Studio": 0, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART022", "package": "Vaisselle", "cat": "Cuisine", "name": "Asssietes plates", "price": 9, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART023", "package": "Vaisselle", "cat": "Cuisine", "name": "Assiettes creuses", "price": 10, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART024", "package": "Vaisselle", "cat": "Cuisine", "name": "Assiettes dessert", "price": 9, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART025", "package": "Vaisselle", "cat": "Cuisine", "name": "bol cereales", "price": 8, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART026", "package": "Vaisselle", "cat": "Cuisine", "name": "tasses expresso", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART027", "package": "Vaisselle", "cat": "Cuisine", "name": "tasses capuccino", "price": 10, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART028", "package": "Vaisselle", "cat": "Cuisine", "name": "verres eau", "price": 6, "qty": {"Studio": 4, "1Ch": 4, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART029", "package": "Vaisselle", "cat": "Cuisine", "name": "verres à pied", "price": 7, "qty": {"Studio": 4, "1Ch": 4, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART030", "package": "Vaisselle", "cat": "Cuisine", "name": "coupe champagne", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART031", "package": "Vaisselle", "cat": "Cuisine", "name": "seau champagne", "price": 40, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART032", "package": "Vaisselle", "cat": "Cuisine", "name": "Tire Bouchon", "price": 12, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART033", "package": "Vaisselle", "cat": "Cuisine", "name": "derouleur essuie tout", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART034", "package": "Vaisselle", "cat": "Cuisine", "name": "boites hermetiques nourriture (tupperware)", "price": 15, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART035", "package": "Vaisselle", "cat": "Cuisine", "name": "Porte carte Wifi", "price": 10, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART036", "package": "Vaisselle", "cat": "Cuisine", "name": "porte capsules café", "price": 15, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART037", "package": "Vaisselle", "cat": "Ménage", "name": "ensemble seau serpillere balai", "price": 30, "qty": {"Studio": 0, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART038", "package": "Vaisselle", "cat": "Ménage", "name": "cintres", "price": 20, "qty": {"Studio": 1, "1Ch": 10, "2Ch": 20, "3Ch": 30}, "mandatory": true}, {"id": "ART039", "package": "Vaisselle", "cat": "Ménage", "name": "pelle balayette", "price": 14, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART040", "package": "Vaisselle", "cat": "Salle de bain", "name": "porte savon douche +lave main", "price": 60, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART041", "package": "Vaisselle", "cat": "Salle de bain", "name": "porte savon brosse a dent salle de bain Mouchoirs", "price": 50, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART042", "package": "Option", "cat": "Électroménager", "name": "Television 55'", "price": 550, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART043", "package": "Option", "cat": "Électroménager", "name": "Television 65'", "price": 650, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART044", "package": "Option", "cat": "Électroménager", "name": "coffre evec master key unique de secours", "price": 1, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART045", "package": "Option", "cat": "Électroménager", "name": "routeurn internet", "price": 110, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART046", "package": "Option", "cat": "Électroménager", "name": "Support Mural TV", "price": 130, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART047", "package": "Option", "cat": "Électroménager", "name": "presse agrumes", "price": 45, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART048", "package": "Option", "cat": "Électroménager", "name": "machine nespresso 110V", "price": 180, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART049", "package": "Option", "cat": "Électroménager", "name": "grille pain", "price": 60, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART050", "package": "Option", "cat": "Électroménager", "name": "theiere", "price": 40, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART051", "package": "Option", "cat": "Électroménager", "name": "Defroisseur", "price": 140, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART052", "package": "Option", "cat": "Électroménager", "name": "Cafetière Classique", "price": 30, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART053", "package": "Option", "cat": "Électroménager", "name": "blender", "price": 80, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART054", "package": "Option", "cat": "Électroménager", "name": "micro ondes", "price": 170, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}];
+
+// Translations for article names (auto-use French if en not provided)
+const ARTICLE_EN = {
+  "epluche legume": "Vegetable peeler",
+  "ouvre boite": "Can opener",
+  "Ustensiles": "Kitchen utensils set",
+  "couteau de cuisine": "Kitchen knife",
+  "couteau à steak": "Steak knife",
+  "set de table": "Placemat",
+  "planche a découper": "Cutting board",
+  "distributeur produit vaiselle/lave main": "Dish soap / hand soap dispenser",
+  "saldier GM": "Large salad bowl",
+  "saladier MM": "Medium salad bowl",
+  "presse ail": "Garlic press",
+  "torchon vaisselle": "Dish towel",
+  "couverts à salade": "Salad servers",
+  "cuillere à dessert cuillere fourchette couteau set de 4": "Cutlery set (4 pcs: dessert spoon, spoon, fork, knife)",
+  "passoire": "Colander",
+  "range couvert": "Cutlery tray",
+  "poubelle de cuisine sous évier": "Under-sink kitchen bin",
+  "organiseur produits entretien sous évier": "Under-sink organizer for cleaning products",
+  "Set Poéle Induction petite moyenne grande": "Induction frying pan set (S/M/L)",
+  "Set de 3 casseroles induction": "Induction saucepan set (3 pcs)",
+  "plat four": "Oven dish",
+  "Asssietes plates": "Dinner plates",
+  "Assiettes creuses": "Soup plates",
+  "Assiettes dessert": "Dessert plates",
+  "bol cereales": "Cereal bowls",
+  "tasses expresso": "Espresso cups",
+  "tasses capuccino": "Cappuccino cups",
+  "verres eau": "Water glasses",
+  "verres à pied": "Wine glasses",
+  "coupe champagne": "Champagne flutes",
+  "seau champagne": "Champagne bucket",
+  "Tire Bouchon": "Corkscrew",
+  "derouleur essuie tout": "Paper towel holder",
+  "boites hermetiques nourriture (tupperware)": "Food storage containers (Tupperware)",
+  "Porte carte Wifi": "WiFi card holder",
+  "porte capsules café": "Coffee capsule holder",
+  "ensemble seau serpillere balai": "Mop, bucket and broom set",
+  "cintres": "Hangers",
+  "pelle balayette": "Dustpan and brush",
+  "porte savon douche +lave main": "Shower & hand wash soap dispenser",
+  "porte savon brosse a dent salle de bain Mouchoirs": "Bathroom soap dish, toothbrush and tissue holder",
+  "Television 55'": "55-inch television",
+  "Television 65'": "65-inch television",
+  "coffre evec master key unique de secours": "Safe with unique emergency master key",
+  "routeurn internet": "Internet router",
+  "Support Mural TV": "TV wall mount",
+  "presse agrumes": "Citrus juicer",
+  "machine nespresso 110V": "Nespresso machine (110V)",
+  "grille pain": "Toaster",
+  "theiere": "Teapot",
+  "Defroisseur": "Clothes steamer",
+  "Cafetière Classique": "Classic coffee maker",
+  "blender": "Blender",
+  "micro ondes": "Microwave",
+};
+
+// Category translations
+const CAT_EN = {
+  "Cuisine": "Kitchen",
+  "Salle de bain": "Bathroom",
+  "Ménage": "Cleaning",
+  "Électroménager": "Appliances",
+};
+
+// UI strings
+const T = {
+  fr: {
+    page0_title: "Votre appartement", page0_sub: "Merci de vérifier vos informations pour commencer.",
+    lbl_apart: "N° d'appartement", lbl_type: "Type d'appartement", lbl_name: "Nom complet", lbl_email: "Email",
+    opt_choose: "-- Choisir --", opt_1ch: "1 Chambre", opt_2ch: "2 Chambres", opt_3ch: "3 Chambres",
+    page0_warn: "ℹ️ Ce formulaire vous présente la liste des articles à équiper votre appartement, conformément au contrat de management. Les articles obligatoires (vert) sont achetés par la gestion. Les articles optionnels (orange) peuvent être cochés si vous souhaitez que la gestion les achète pour vous — sinon, vous devrez les acheter vous-même.",
+    step_cuisine_title: "Étape 1 — Cuisine", step_cuisine_sub: "Articles obligatoires fournis par la gestion pour votre cuisine.",
+    step_sdb_title: "Étape 2 — Salle de bain", step_sdb_sub: "Articles obligatoires pour équiper votre salle de bain.",
+    step_menage_title: "Étape 3 — Ménage", step_menage_sub: "Articles d'entretien obligatoires.",
+    step_opt_title: "Étape 4 — Options (électroménager)", step_opt_sub: "Articles optionnels. Cochez ceux que vous souhaitez que la gestion achète pour vous.",
+    pkg_mandatory: "Package obligatoire", pkg_mandatory_desc: "Ces articles sont inclus dans votre contrat. Les quantités sont adaptées à votre type d'appartement.",
+    pkg_mandatory_desc2: "Articles achetés par la gestion pour vous.",
+    pkg_optional: "Package optionnel", pkg_optional_desc: "Pour chaque article : cochez si vous voulez que la société achète pour vous (ajouté à votre facture). Ne cochez pas si vous préférez l'acheter vous-même — il apparaîtra dans la liste récap.",
+    recap_title: "Récapitulatif de votre commande", recap_sub: "Vérifiez puis validez votre commande.",
+    buy_title: "🛍️ À acheter par vos soins", buy_desc: "Vous n'avez pas coché ces articles — vous devrez donc les acheter vous-même pour votre appartement :",
+    btn_print: "🖨️ Imprimer cette liste",
+    total_label: "MONTANT TOTAL À PAYER À LA GESTION",
+    submit_label: "Validation :", submit_desc: "Cliquez ci-dessous pour envoyer votre commande à la gestion.", btn_submit: "✅ Envoyer ma commande",
+    btn_prev: "← Précédent", btn_next: "Suivant →",
+    btn_switch_lang: "🌐 Changer de langue",
+    running_label: "Total en cours",
+    sidebar_title: "💰 Récapitulatif",
+    sb_cuisine: "Package Vaisselle", sb_sdb: "Salle de bain", sb_menage: "Ménage", sb_options: "Options",
+    sb_total: "TOTAL",
+    subcat_verres: "Verres", subcat_vaisselle: "Vaisselle", subcat_cuisson: "Ustensiles de cuisson", subcat_accessoires: "Accessoires",
+    no_option_msg: "Aucune option sélectionnée — assurez-vous que les articles listés ci-dessous seront fournis par vos soins.",
+    submit_btn_apt: "✅ Valider ma commande pour appartement N°",
+    ty_title: "Merci pour votre commande !",
+    ty_line1: "Votre commande pour l'appartement",
+    ty_line2: "a bien été enregistrée. Notre équipe vous contactera sous peu pour organiser la suite.",
+    ty_summary: "Récapitulatif de votre commande",
+    ty_amount_label: "Montant total :",
+    ty_sending: "⏳ Envoi en cours…",
+    ty_sent_ok: "✅ Commande enregistrée automatiquement",
+    ty_sent_fail: "⚠️ L'enregistrement automatique a échoué — utilisez le bouton email ci-dessous pour nous transmettre votre commande",
+    ty_fallback_title: "Envoyer par email (en secours)",
+    ty_fallback_desc: "Si vous préférez, cliquez pour envoyer votre commande par email :",
+    th_article: "Article", th_qty: "Qté", th_unit: "Prix unitaire", th_sub: "Sous-total", th_choose: "Choisir",
+    tag_mandatory: "OBLIGATOIRE", tag_optional: "OPTIONNEL",
+    subtotal_step: "Sous-total", subtotal_opt: "Sous-total options",
+    mandatory_subtotal: "Sous-total obligatoire", optional_subtotal: "Sous-total options",
+    no_article_cat: "Aucun article obligatoire pour cet appart dans cette catégorie.",
+    no_optional: "Aucun article optionnel pour cet appart.",
+    validate_msg: "Merci de renseigner le numéro et le type d'appartement.",
+    app_title: "🏖️ Aqua Resort – Package d'équipement", app_subtitle: "Formulaire de commande des articles pour votre appartement",
+    chosen_opts: "Options choisies (achetées par la gestion)",
+    cat_mandatory_suffix: "(obligatoire)",
+    submit_ready: "✅ Commande prête à être envoyée",
+    submit_opt1: "Option 1 : Cliquez pour envoyer par email à la gestion :",
+    submit_opt2: "Option 2 : Copiez cette ligne et collez-la dans l'onglet Reponses de votre Excel (ligne vide) :",
+    btn_mail: "📧 Ouvrir mon email", btn_copy: "📋 Copier la ligne", btn_copied: "✓ Copié !",
+    print_title: "Aqua Resort - Articles à acheter par vos soins",
+  },
+  en: {
+    page0_title: "Your apartment", page0_sub: "Please confirm your details to start.",
+    lbl_apart: "Apartment number", lbl_type: "Apartment type", lbl_name: "Full name", lbl_email: "Email",
+    opt_choose: "-- Choose --", opt_1ch: "1 Bedroom", opt_2ch: "2 Bedrooms", opt_3ch: "3 Bedrooms",
+    page0_warn: "ℹ️ This form lists the items to equip your apartment, as per the management contract. Mandatory items (green) are purchased by the management. Optional items (orange) can be ticked if you want the management to buy them for you — otherwise you will need to buy them yourself.",
+    step_cuisine_title: "Step 1 — Kitchen", step_cuisine_sub: "Mandatory items provided by the management for your kitchen.",
+    step_sdb_title: "Step 2 — Bathroom", step_sdb_sub: "Mandatory items to equip your bathroom.",
+    step_menage_title: "Step 3 — Cleaning", step_menage_sub: "Mandatory cleaning items.",
+    step_opt_title: "Step 4 — Options (appliances)", step_opt_sub: "Optional items. Tick the ones you want the management to purchase for you.",
+    pkg_mandatory: "Mandatory package", pkg_mandatory_desc: "These items are included in your contract. Quantities match your apartment type.",
+    pkg_mandatory_desc2: "Items purchased by the management on your behalf.",
+    pkg_optional: "Optional package", pkg_optional_desc: "For each item: tick if you want the company to buy it for you (added to your invoice). Leave unticked if you prefer to buy it yourself — it will appear in the summary list.",
+    recap_title: "Order summary", recap_sub: "Review and confirm your order.",
+    buy_title: "🛍️ To be purchased by you", buy_desc: "You did not tick these items — you will have to buy them yourself for your apartment:",
+    btn_print: "🖨️ Print this list",
+    total_label: "TOTAL AMOUNT DUE TO MANAGEMENT",
+    submit_label: "Submit:", submit_desc: "Click below to send your order to the management.", btn_submit: "✅ Submit my order",
+    btn_prev: "← Previous", btn_next: "Next →",
+    btn_switch_lang: "🌐 Change language",
+    running_label: "Running total",
+    sidebar_title: "💰 Summary",
+    sb_cuisine: "Dishware package", sb_sdb: "Bathroom", sb_menage: "Cleaning", sb_options: "Options",
+    sb_total: "TOTAL",
+    subcat_verres: "Glassware", subcat_vaisselle: "Dishware", subcat_cuisson: "Cookware", subcat_accessoires: "Accessories",
+    no_option_msg: "No option selected — please make sure the items listed below will be provided by you.",
+    submit_btn_apt: "✅ Submit my order for apartment N°",
+    ty_title: "Thank you for your order!",
+    ty_line1: "Your order for apartment",
+    ty_line2: "has been recorded. Our team will contact you shortly to organise next steps.",
+    ty_summary: "Order summary",
+    ty_amount_label: "Total amount:",
+    ty_sending: "⏳ Sending…",
+    ty_sent_ok: "✅ Order saved automatically",
+    ty_sent_fail: "⚠️ Automatic saving failed — please use the email button below to send us your order",
+    ty_fallback_title: "Send by email (backup)",
+    ty_fallback_desc: "If you prefer, click to send your order by email:",
+    th_article: "Item", th_qty: "Qty", th_unit: "Unit price", th_sub: "Subtotal", th_choose: "Select",
+    tag_mandatory: "MANDATORY", tag_optional: "OPTIONAL",
+    subtotal_step: "Subtotal", subtotal_opt: "Options subtotal",
+    mandatory_subtotal: "Mandatory subtotal", optional_subtotal: "Options subtotal",
+    no_article_cat: "No mandatory item for this apartment in this category.",
+    no_optional: "No optional items for this apartment.",
+    validate_msg: "Please fill in the apartment number and type.",
+    app_title: "🏖️ Aqua Resort – Equipment Package", app_subtitle: "Order form for your apartment equipment",
+    chosen_opts: "Chosen options (purchased by the management)",
+    cat_mandatory_suffix: "(mandatory)",
+    submit_ready: "✅ Order ready to be sent",
+    submit_opt1: "Option 1: Click to send by email to the management:",
+    submit_opt2: "Option 2: Copy this line and paste it in the Reponses tab of your Excel (empty row):",
+    btn_mail: "📧 Open my email", btn_copy: "📋 Copy the line", btn_copied: "✓ Copied!",
+    print_title: "Aqua Resort - Items to purchase yourself",
+  }
+};
+
+const STEPS = {
+  fr: [ {label:"Identification"}, {label:"Cuisine"}, {label:"Salle de bain"}, {label:"Ménage"}, {label:"Options"}, {label:"Validation"} ],
+  en: [ {label:"Identification"}, {label:"Kitchen"}, {label:"Bathroom"}, {label:"Cleaning"}, {label:"Options"}, {label:"Review"} ],
+};
+
+let LANG = 'fr';
+let t = T.fr;
+let currentPage = 0;
+let state = { apartId:"", apartType:"", clientName:"", clientEmail:"", selections:{} };
+
+// URL pre-fill
+const urlParams = new URLSearchParams(window.location.search);
+function prefillFromURL() {
+  if (urlParams.get('appart')) document.getElementById('apartId').value = urlParams.get('appart');
+  if (urlParams.get('type')) document.getElementById('apartType').value = urlParams.get('type');
+  if (urlParams.get('nom') || urlParams.get('name')) document.getElementById('clientName').value = urlParams.get('nom') || urlParams.get('name');
+  if (urlParams.get('email')) document.getElementById('clientEmail').value = urlParams.get('email');
+  // If URL specifies a lang, skip landing
+  const urlLang = urlParams.get('lang');
+  if (urlLang === 'fr' || urlLang === 'en') {
+    startApp(urlLang);
+  }
+}
+
+function startApp(lang) {
+  LANG = lang;
+  t = T[lang];
+  document.documentElement.lang = lang;
+  document.getElementById('landingPage').style.display = 'none';
+  document.getElementById('appMain').classList.add('visible');
+  applyTranslations();
+  prefillFromURL();
+  renderSteps();
+  // If URL has full pre-fill incl. type, skip straight to step 1
+  if (urlParams.get('appart') && urlParams.get('type')) {
+    state.apartId = document.getElementById('apartId').value;
+    state.apartType = document.getElementById('apartType').value;
+    state.clientName = document.getElementById('clientName').value;
+    state.clientEmail = document.getElementById('clientEmail').value;
+  }
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.dataset.t;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.getElementById('appTitle').textContent = t.app_title;
+  document.getElementById('appSubtitle').textContent = t.app_subtitle;
+}
+
+function renderSteps() {
+  const steps = STEPS[LANG];
+  const bar = document.getElementById('stepsBar');
+  bar.innerHTML = steps.map((s, i) => {
+    const cls = i === currentPage ? 'active' : (i < currentPage ? 'done' : '');
+    return `<div class="step-item ${cls}"><div class="step-circle">${i}</div><div class="step-label">${s.label}</div></div>`;
+  }).join('');
+}
+
+function nameFor(a) {
+  if (LANG === 'en') {
+    const key = a.name.trim();
+    return ARTICLE_EN[key] || ARTICLE_EN[key.replace(/\s+$/,'')] || a.name;
+  }
+  return a.name;
+}
+
+function catFor(c) {
+  return LANG === 'en' ? (CAT_EN[c] || c) : c;
+}
+
+function getArticlesFor(category, mandatory) {
+  const type = state.apartType || "Studio";
+  return ARTICLES.filter(a => a.cat === category && a.mandatory === mandatory && (a.qty[type] || 0) > 0);
+}
+
+function getAllOptionalArticles() {
+  const type = state.apartType || "Studio";
+  // Only show optionals that have qty > 0 for this apartment type
+  return ARTICLES.filter(a => !a.mandatory && (a.qty[type] || 0) > 0);
+}
+
+function fmt(n) {
+  return '$' + (Math.round(n * 100) / 100).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+// Sub-category mapping for Cuisine
+const SUBCAT_MAP = {
+  "verres eau": "verres", "verres à pied": "verres", "coupe champagne": "verres",
+  "tasses expresso": "verres", "tasses capuccino": "verres",
+  "Asssietes plates": "vaisselle", "Assiettes creuses": "vaisselle", "Assiettes dessert": "vaisselle",
+  "bol cereales": "vaisselle", "saldier GM": "vaisselle", "saladier MM": "vaisselle",
+  "Set Poéle Induction petite moyenne grande": "cuisson", "Set de 3 casseroles induction": "cuisson",
+  "plat four": "cuisson",
+};
+// Everything else in Cuisine falls in "accessoires"
+function subcatOf(a) {
+  if (a.cat !== "Cuisine") return null;
+  return SUBCAT_MAP[a.name.trim()] || "accessoires";
+}
+const SUBCAT_LABEL = {
+  fr: { verres: "🥂 Verres", vaisselle: "🍽️ Vaisselle", cuisson: "🍳 Ustensiles de cuisson", accessoires: "🔪 Accessoires" },
+  en: { verres: "🥂 Glassware", vaisselle: "🍽️ Dinnerware", cuisson: "🍳 Cookware", accessoires: "🔪 Accessories" },
+};
+const SUBCAT_ORDER = ["verres", "vaisselle", "cuisson", "accessoires"];
+
+function renderMandatoryTable(tableId, category) {
+  const arts = getArticlesFor(category, true);
+  const type = state.apartType;
+  const container = document.getElementById(tableId);
+  if (arts.length === 0) {
+    container.outerHTML = `<table id="${tableId}"><tr><td style="text-align:center; padding:30px; color:#64748b;">${t.no_article_cat}</td></tr></table>`;
+    return 0;
+  }
+
+  let total = 0;
+
+  // For Cuisine: group by sub-category — render as a wrapper div (not a table)
+  if (category === "Cuisine") {
+    // Convert the <table> container to a <div> by replacing outerHTML
+    let html = `<div id="${tableId}" class="subcat-wrap">`;
+    const groups = {};
+    for (const a of arts) {
+      const sc = subcatOf(a);
+      (groups[sc] ||= []).push(a);
+    }
+    for (const sc of SUBCAT_ORDER) {
+      const items = groups[sc];
+      if (!items || !items.length) continue;
+      html += `<div class="subcat-title">${SUBCAT_LABEL[LANG][sc]}</div>`;
+      html += `<table class="subcat-table"><thead><tr><th>${t.th_article}</th><th>${t.th_qty}</th><th>${t.th_unit}</th><th>${t.th_sub}</th></tr></thead><tbody>`;
+      let sub = 0;
+      for (const a of items) {
+        const qty = a.qty[type] || 0;
+        const s = qty * a.price;
+        sub += s; total += s;
+        html += `<tr><td class="art-name">${nameFor(a)} <span class="mandatory-tag">${t.tag_mandatory}</span></td>
+          <td><input class="qty-input" type="number" value="${qty}" disabled></td>
+          <td class="price">${fmt(a.price)}</td>
+          <td class="total">${fmt(s)}</td></tr>`;
+      }
+      html += `<tr><td colspan="3" style="text-align:right; font-weight:700;">${t.subtotal_step} ${SUBCAT_LABEL[LANG][sc].replace(/^\S+\s/, '')} :</td><td class="total">${fmt(sub)}</td></tr>`;
+      html += `</tbody></table>`;
+    }
+    html += `<div style="margin-top:16px; text-align:right; font-weight:700; font-size:16px; color:#0369a1;">${t.subtotal_step} ${catFor(category)} : ${fmt(total)}</div>`;
+    html += `</div>`;
+    container.outerHTML = html;
+    return total;
+  }
+
+  // Default: single table
+  let html = `<thead><tr><th>${t.th_article}</th><th>${t.th_qty}</th><th>${t.th_unit}</th><th>${t.th_sub}</th></tr></thead><tbody>`;
+  for (const a of arts) {
+    const qty = a.qty[type] || 0;
+    const sub = qty * a.price;
+    total += sub;
+    html += `<tr>
+      <td class="art-name">${nameFor(a)} <span class="mandatory-tag">${t.tag_mandatory}</span></td>
+      <td><input class="qty-input" type="number" value="${qty}" disabled></td>
+      <td class="price">${fmt(a.price)}</td>
+      <td class="total">${fmt(sub)}</td>
+    </tr>`;
+  }
+  html += `<tr><td colspan="3" style="text-align:right; font-weight:700; padding-top:14px;">${t.subtotal_step} ${catFor(category)} :</td><td class="total" style="font-size:16px; padding-top:14px;">${fmt(total)}</td></tr>`;
+  html += `</tbody>`;
+  container.innerHTML = html;
+  return total;
+}
+
+function renderOptionalTable() {
+  const arts = getAllOptionalArticles();
+  const type = state.apartType;
+  if (arts.length === 0) {
+    document.getElementById('tableOpt').innerHTML = `<tr><td style="text-align:center; padding:30px; color:#64748b;">${t.no_optional}</td></tr>`;
+    return;
+  }
+  let html = `<thead><tr><th style="width:50px;">${t.th_choose}</th><th>${t.th_article}</th><th>${t.th_qty}</th><th>${t.th_unit}</th><th>${t.th_sub}</th></tr></thead><tbody>`;
+  for (const a of arts) {
+    const defaultQty = a.qty[type] || 1;
+    const saved = state.selections[a.id];
+    const checked = saved > 0 ? 'checked' : '';
+    const qty = saved !== undefined ? saved : 0;
+    html += `<tr data-art-id="${a.id}">
+      <td><input type="checkbox" class="checkbox opt-check" data-id="${a.id}" data-price="${a.price}" data-default-qty="${defaultQty}" ${checked}></td>
+      <td class="art-name">${nameFor(a)} <span class="opt-tag">${t.tag_optional}</span></td>
+      <td><input class="qty-input opt-qty" data-id="${a.id}" type="number" min="0" value="${qty || defaultQty}" ${checked ? '' : 'disabled'}></td>
+      <td class="price">${fmt(a.price)}</td>
+      <td class="total opt-sub" data-id="${a.id}">${fmt(qty * a.price)}</td>
+    </tr>`;
+  }
+  html += `<tr><td colspan="4" style="text-align:right; font-weight:700; padding-top:14px;">${t.subtotal_opt} :</td><td class="total" id="optSubtotal" style="font-size:16px; padding-top:14px;">$0.00</td></tr>`;
+  html += `</tbody>`;
+  document.getElementById('tableOpt').innerHTML = html;
+
+  document.querySelectorAll('.opt-check').forEach(cb => cb.addEventListener('change', onOptChange));
+  document.querySelectorAll('.opt-qty').forEach(qi => qi.addEventListener('input', onOptQtyChange));
+  updateOptTotals();
+}
+
+function onOptChange(e) {
+  const id = e.target.dataset.id;
+  const qtyInput = document.querySelector(`.opt-qty[data-id="${id}"]`);
+  const defaultQty = parseInt(e.target.dataset.defaultQty) || 1;
+  if (e.target.checked) {
+    qtyInput.disabled = false;
+    if (parseInt(qtyInput.value) < 1) qtyInput.value = defaultQty;
+    state.selections[id] = parseInt(qtyInput.value) || defaultQty;
+  } else {
+    qtyInput.disabled = true;
+    state.selections[id] = 0;
+  }
+  updateOptTotals();
+}
+
+function onOptQtyChange(e) {
+  const id = e.target.dataset.id;
+  const val = Math.max(0, parseInt(e.target.value) || 0);
+  e.target.value = val;
+  state.selections[id] = val;
+  updateOptTotals();
+}
+
+function updateOptTotals() {
+  let total = 0;
+  document.querySelectorAll('.opt-check').forEach(cb => {
+    const id = cb.dataset.id;
+    const price = parseFloat(cb.dataset.price);
+    const qty = cb.checked ? (state.selections[id] || 0) : 0;
+    const sub = qty * price;
+    const subCell = document.querySelector(`.opt-sub[data-id="${id}"]`);
+    if (subCell) subCell.textContent = fmt(sub);
+    total += sub;
+  });
+  const el = document.getElementById('optSubtotal');
+  if (el) el.textContent = fmt(total);
+  updateRunningTotal();
+}
+
+function computeMandatoryTotal() {
+  const type = state.apartType;
+  if (!type) return 0;
+  let s = 0;
+  for (const a of ARTICLES) if (a.mandatory) s += (a.qty[type] || 0) * a.price;
+  return s;
+}
+
+function computeMandatoryByCategory(category) {
+  const type = state.apartType;
+  if (!type) return 0;
+  let s = 0;
+  for (const a of ARTICLES) if (a.mandatory && a.cat === category) s += (a.qty[type] || 0) * a.price;
+  return s;
+}
+
+function computeOptionalTotal() {
+  let s = 0;
+  for (const a of ARTICLES) if (!a.mandatory && state.selections[a.id]) s += state.selections[a.id] * a.price;
+  return s;
+}
+
+function updateRunningTotal() {
+  const cuisine = computeMandatoryByCategory("Cuisine");
+  const sdb = computeMandatoryByCategory("Salle de bain");
+  const menage = computeMandatoryByCategory("Ménage");
+  const opts = computeOptionalTotal();
+  const total = cuisine + sdb + menage + opts;
+  // Sidebar lines
+  const setIf = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = fmt(val); };
+  setIf('amt-vaisselle', cuisine);
+  setIf('amt-sdb', sdb);
+  setIf('amt-menage', menage);
+  setIf('amt-options', opts);
+  setIf('amt-total', total);
+  // Highlight active line based on page
+  const map = {1:'line-cuisine',2:'line-sdb',3:'line-menage',4:'line-options'};
+  ['line-cuisine','line-sdb','line-menage','line-options'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('active', map[currentPage] === id);
+  });
+  // Legacy running-total popup
+  const el = document.getElementById('runningTotalAmount');
+  if (el) el.textContent = fmt(total);
+}
+
+function goNext() {
+  if (currentPage === 0) {
+    state.apartId = document.getElementById('apartId').value.trim();
+    state.apartType = document.getElementById('apartType').value;
+    state.clientName = document.getElementById('clientName').value.trim();
+    state.clientEmail = document.getElementById('clientEmail').value.trim();
+    if (!state.apartId || !state.apartType) { alert(t.validate_msg); return; }
+  }
+  currentPage++;
+  showPage();
+}
+function goPrev() {
+  if (currentPage === 0) {
+    // Retour à la page d'accueil (choix de langue)
+    document.getElementById('appMain').classList.remove('visible');
+    document.getElementById('landingPage').style.display = 'flex';
+    window.scrollTo({top:0});
+    return;
+  }
+  currentPage--;
+  showPage();
+}
+
+function showPage() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.page[data-page="${currentPage}"]`).classList.add('active');
+  renderSteps();
+  if (currentPage === 1) renderMandatoryTable('tableCuisine', 'Cuisine');
+  if (currentPage === 2) renderMandatoryTable('tableSdb', 'Salle de bain');
+  if (currentPage === 3) renderMandatoryTable('tableMenage', 'Ménage');
+  if (currentPage === 4) renderOptionalTable();
+  if (currentPage === 5) renderRecap();
+  document.getElementById('btnPrev').disabled = false;
+  document.getElementById('btnPrev').textContent = currentPage === 0
+    ? (LANG === 'en' ? '← Language' : '← Langue')
+    : (LANG === 'en' ? '← Previous' : '← Précédent');
+  document.getElementById('btnNext').style.display = currentPage >= 5 ? 'none' : 'inline-block';
+  // Hide the old floating running total popup — the sidebar replaces it
+  const rt = document.getElementById('runningTotal');
+  if (rt) rt.style.display = 'none';
+  // Sidebar visible sur les étapes 1-5 (masquée sur identification)
+  const sb = document.getElementById('sidebarTotal');
+  if (sb) sb.style.display = (currentPage >= 1 && currentPage <= 5) ? 'block' : 'none';
+  // Sidebar Next visible sur 1-4, Validate visible uniquement sur 5
+  const sideNext = document.getElementById('btnNextSide');
+  if (sideNext) sideNext.style.display = (currentPage >= 1 && currentPage <= 4) ? 'inline-block' : 'none';
+  const sideSubmit = document.getElementById('btnSubmitSide');
+  if (sideSubmit) sideSubmit.style.display = (currentPage === 5) ? 'inline-block' : 'none';
+  // Breakdown sous total visible uniquement sur page 5
+  const sbBd = document.getElementById('sbBreakdown');
+  if (sbBd) sbBd.style.display = (currentPage === 5) ? 'block' : 'none';
+  updateRunningTotal();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderRecap() {
+  const type = state.apartType;
+  const mandatory = ARTICLES.filter(a => a.mandatory && (a.qty[type] || 0) > 0);
+  const optChosen = ARTICLES.filter(a => !a.mandatory && (state.selections[a.id] || 0) > 0);
+  const optNotChosen = ARTICLES.filter(a => !a.mandatory && (a.qty[type] || 0) > 0 && !(state.selections[a.id] > 0));
+
+  const mandTotal = computeMandatoryTotal();
+  const optTotal = computeOptionalTotal();
+  const grand = mandTotal + optTotal;
+
+  const cats = ["Cuisine", "Salle de bain", "Ménage"];
+  let html = `<div style="background:#f0f9ff; padding:14px 18px; border-radius:10px; margin-bottom:14px;">
+    <b>${LANG==='en'?'Apartment':'Appartement'} :</b> ${state.apartId} (${type}) &nbsp;|&nbsp;
+    <b>${LANG==='en'?'Name':'Nom'} :</b> ${state.clientName || '—'} &nbsp;|&nbsp;
+    <b>Email :</b> ${state.clientEmail || '—'}
+  </div>`;
+
+  html += `<table class="recap-table"><tbody>`;
+  // Kits obligatoires : juste le total par catégorie, pas de liste détaillée
+  for (const cat of cats) {
+    const items = mandatory.filter(a => a.cat === cat);
+    if (items.length === 0) continue;
+    const catTotal = items.reduce((s, a) => s + (a.qty[type] || 0) * a.price, 0);
+    html += `<tr class="recap-cat"><td colspan="3">${catFor(cat)} ${t.cat_mandatory_suffix}</td><td class="total">${fmt(catTotal)}</td></tr>`;
+  }
+  // Options choisies : détail ligne par ligne, ou message si aucune
+  if (optChosen.length > 0) {
+    html += `<tr class="recap-cat"><td colspan="4">${t.chosen_opts}</td></tr>`;
+    for (const a of optChosen) {
+      const qty = state.selections[a.id];
+      html += `<tr><td>${nameFor(a)}</td><td>${t.th_qty} ${qty}</td><td class="price">${fmt(a.price)}</td><td class="total">${fmt(qty * a.price)}</td></tr>`;
+    }
+  } else {
+    html += `<tr class="recap-cat"><td colspan="4">${t.chosen_opts}</td></tr>`;
+    html += `<tr><td colspan="4" style="padding:14px 16px; background:#fff7ed; color:#9a3412; font-style:italic; border-left:3px solid #f97316;">⚠️ ${t.no_option_msg}</td></tr>`;
+  }
+  html += `<tr><td colspan="3" style="text-align:right; font-weight:700; padding-top:12px;">${t.mandatory_subtotal}</td><td class="total" style="padding-top:12px;">${fmt(mandTotal)}</td></tr>`;
+  html += `<tr><td colspan="3" style="text-align:right; font-weight:700;">${t.optional_subtotal}</td><td class="total">${fmt(optTotal)}</td></tr>`;
+  html += `</tbody></table>`;
+  document.getElementById('recapContainer').innerHTML = html;
+
+  if (optNotChosen.length > 0) {
+    document.getElementById('buyYourselfBlock').style.display = 'block';
+    document.getElementById('buyYourselfList').innerHTML = optNotChosen.map(a => `<li>❌ ${nameFor(a)}</li>`).join('');
+  } else {
+    document.getElementById('buyYourselfBlock').style.display = 'none';
+  }
+  document.getElementById('finalTotal').textContent = fmt(grand);
+  document.getElementById('finalBreakdown').textContent = `${t.mandatory_subtotal} : ${fmt(mandTotal)} + ${t.optional_subtotal} : ${fmt(optTotal)}`;
+  // Breakdown sous le TOTAL dans la sidebar
+  const sbBd = document.getElementById('sbBreakdown');
+  if (sbBd) {
+    sbBd.style.display = 'block';
+    sbBd.innerHTML = `${t.mandatory_subtotal} : ${fmt(mandTotal)}<br>${t.optional_subtotal} : ${fmt(optTotal)}`;
+  }
+  // Bouton validation sidebar avec numéro d'appartement
+  const btnSide = document.getElementById('btnSubmitSide');
+  if (btnSide) {
+    btnSide.textContent = `${t.submit_btn_apt}${state.apartId || '—'}`;
+  }
+}
+
+function printBuyList() {
+  const type = state.apartType;
+  const optNotChosen = ARTICLES.filter(a => !a.mandatory && (a.qty[type] || 0) > 0 && !(state.selections[a.id] > 0));
+  const w = window.open('', '_blank');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${t.print_title}</title>
+    <style>body{font-family:Arial,sans-serif;padding:40px;max-width:700px;margin:0 auto;color:#111;}
+    h1{color:#0369a1;border-bottom:2px solid #0369a1;padding-bottom:10px;}
+    .info{background:#f1f5f9;padding:12px;border-radius:6px;margin:18px 0;font-size:14px;}
+    ul{list-style:none;padding:0;}
+    li{padding:10px 0;border-bottom:1px dashed #cbd5e1;font-size:15px;}
+    li::before{content:"☐ ";color:#0369a1;font-weight:700;}
+    .footer{margin-top:30px;font-size:12px;color:#64748b;}
+    </style></head><body>
+    <h1>${t.print_title}</h1>
+    <div class="info">
+      <b>${LANG==='en'?'Apartment':'Appartement'}:</b> ${state.apartId} (${type})<br>
+      <b>${LANG==='en'?'Name':'Nom'}:</b> ${state.clientName || '—'}<br>
+      <b>Email:</b> ${state.clientEmail || '—'}<br>
+      <b>Date:</b> ${new Date().toLocaleDateString(LANG==='en'?'en-US':'fr-FR')}
+    </div>
+    <p>${t.buy_desc}</p>
+    <ul>${optNotChosen.map(a => `<li>${nameFor(a)}</li>`).join('')}</ul>
+    <div class="footer">Aqua Resort – ${LANG==='en'?'Items to purchase yourself':'Articles à acheter par vos soins'}</div>
+    </body></html>`);
+  w.document.close();
+  setTimeout(() => { w.print(); }, 300);
+}
+
+function handleSubmitClick() {
+  alert('Bouton cliqué — démarrage de la validation…');
+  if (typeof submitForm !== 'function') {
+    alert('ERREUR : la fonction submitForm n\'existe pas !');
+    return;
+  }
+  submitForm();
+}
+
+function submitForm() {
+  console.log('[Aqua] submitForm() called, state=', state);
+  try {
+    const optArticles = ARTICLES.filter(a => !a.mandatory);
+    const now = new Date();
+    const dateStr = now.toLocaleDateString(LANG==='en'?'en-US':'fr-FR');
+    const row = [state.apartId, dateStr, ...optArticles.map(a => state.selections[a.id] || 0)];
+    const csvLine = row.join('\t');
+
+    const mandTotal = computeMandatoryTotal();
+    const optTotal = computeOptionalTotal();
+    const grand = mandTotal + optTotal;
+    const type = state.apartType;
+    const optChosen = ARTICLES.filter(a => !a.mandatory && (state.selections[a.id] || 0) > 0);
+    const optNotChosen = ARTICLES.filter(a => !a.mandatory && (a.qty[type] || 0) > 0 && !(state.selections[a.id] > 0));
+
+    // Email body (fallback)
+    let body = (LANG==='en'?'NEW AQUA RESORT ORDER':'NOUVELLE COMMANDE AQUA RESORT')+`\n\n`;
+    body += `${LANG==='en'?'Apartment':'Appartement'}: ${state.apartId} (${type})\n`;
+    body += `${LANG==='en'?'Client':'Client'}: ${state.clientName}\n`;
+    body += `Email: ${state.clientEmail}\n`;
+    body += `Date: ${dateStr}\n\n--- ${LANG==='en'?'TOTALS':'TOTAUX'} ---\n`;
+    body += `${t.mandatory_subtotal}: ${fmt(mandTotal)}\n${t.optional_subtotal}: ${fmt(optTotal)}\n${t.total_label}: ${fmt(grand)}\n\n`;
+    body += `--- ${LANG==='en'?'CHOSEN OPTIONS':'OPTIONS CHOISIES'} ---\n`;
+    if (optChosen.length) optChosen.forEach(a => { body += `- ${nameFor(a)} x${state.selections[a.id]} = ${fmt(state.selections[a.id] * a.price)}\n`; });
+    else body += `(${LANG==='en'?'none':'aucune'})\n`;
+    body += `\n--- ${LANG==='en'?'TO BE BOUGHT BY CLIENT':'À ACHETER PAR LE CLIENT'} ---\n`;
+    if (optNotChosen.length) optNotChosen.forEach(a => { body += `- ${nameFor(a)}\n`; });
+    else body += `(${LANG==='en'?'none':'aucun'})\n`;
+    body += `\n--- ${LANG==='en'?'LINE TO PASTE IN EXCEL (Reponses tab)':'LIGNE A COLLER DANS EXCEL (onglet Reponses)'} ---\n${csvLine}\n`;
+    const mail = `mailto:${MANAGEMENT_EMAIL}?subject=${encodeURIComponent(`Aqua Resort - ${state.apartId}`)}&body=${encodeURIComponent(body)}`;
+
+    // Payload for Google Sheets webhook
+    const payload = {
+      apartId: state.apartId,
+      apartType: type,
+      clientName: state.clientName,
+      clientEmail: state.clientEmail,
+      date: now.toISOString(),
+      mandatoryTotal: Math.round(mandTotal * 100) / 100,
+      optionalTotal: Math.round(optTotal * 100) / 100,
+      grandTotal: Math.round(grand * 100) / 100,
+      selections: Object.fromEntries(optArticles.map(a => [a.name, state.selections[a.id] || 0])),
+      optChosen: optChosen.map(a => ({ name: a.name, qty: state.selections[a.id], price: a.price })),
+      optNotChosen: optNotChosen.map(a => a.name),
+      csvLine: csvLine,
+      lang: LANG,
+    };
+
+    // Replace the entire content of the page 5 with the thank-you screen (safest approach)
+    const page5 = document.querySelector('.page[data-page="5"]');
+    if (!page5) { alert('ERREUR: page 5 introuvable'); return; }
+    page5.innerHTML = `
+      <div class="ty-screen">
+        <div class="ty-icon">✅</div>
+        <h2 class="ty-title">${t.ty_title || 'Merci pour votre commande !'}</h2>
+        <p class="ty-text">${t.ty_line1 || 'Votre commande pour appartement'} <b>N°${state.apartId}</b> ${t.ty_line2 || 'a bien été enregistrée.'}</p>
+        <div class="ty-summary">
+          <div class="ty-summary-title">${t.ty_summary || 'Récapitulatif'}</div>
+          <div class="ty-summary-row"><span>${t.mandatory_subtotal || 'Obligatoire'}</span><span>${fmt(mandTotal)}</span></div>
+          <div class="ty-summary-row"><span>${t.optional_subtotal || 'Options'}</span><span>${fmt(optTotal)}</span></div>
+          <div class="ty-summary-row ty-summary-total"><span>${t.ty_amount_label || 'Total:'}</span><span>${fmt(grand)}</span></div>
+        </div>
+        <div id="sendStatus" class="send-status">${t.ty_sending || '⏳ Envoi en cours…'}</div>
+        <div id="emailFallback" class="email-fallback" style="display:none;">
+          <h4>${t.ty_fallback_title || 'Envoyer par email'}</h4>
+          <p>${t.ty_fallback_desc || 'Cliquez pour envoyer par email :'}</p>
+          <a href="${mail}" class="btn btn-success">${t.btn_mail || '📧 Envoyer'}</a>
+        </div>
+      </div>`;
+
+    // Hide nav + sidebar
+    const sb = document.getElementById('sidebarTotal');
+    if (sb) sb.style.display = 'none';
+    const navBar = document.querySelector('.nav');
+    if (navBar) navBar.style.display = 'none';
+
+    // Send to webhook
+    const statusEl = document.getElementById('sendStatus');
+    const fallbackEl = document.getElementById('emailFallback');
+    if (WEBHOOK_URL && WEBHOOK_URL.indexOf('http') === 0) {
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+      }).then(() => {
+        statusEl.className = 'send-status ok';
+        statusEl.textContent = t.ty_sent_ok || '✅ Commande enregistrée';
+      }).catch(err => {
+        console.error('[Aqua] fetch error:', err);
+        statusEl.className = 'send-status ko';
+        statusEl.textContent = (t.ty_sent_fail || 'Échec auto-save') + ' — ' + err.message;
+        fallbackEl.style.display = 'block';
+      });
+    } else {
+      statusEl.style.display = 'none';
+      fallbackEl.style.display = 'block';
+    }
+
+    window.scrollTo({top:0, behavior:'smooth'});
+  } catch (err) {
+    console.error('[Aqua] submitForm error:', err);
+    alert('Erreur pendant la validation : ' + err.message + '\n\nStack: ' + (err.stack || '').substring(0, 500));
+  }
+}
+
+// Try to set landing background
+(function(){
+  const img = new Image();
+  img.onload = () => { document.getElementById('landingBg').style.backgroundImage = `url('aqua resort (37).jpg')`; };
+  img.onerror = () => { document.getElementById('landingBg').classList.add('landing-bg-fallback'); };
+  img.src = 'aqua resort (37).jpg';
+})();
+
+// If URL has lang, auto-start
+window.addEventListener('DOMContentLoaded', () => {
+  const urlLang = urlParams.get('lang');
+  if (urlLang === 'fr' || urlLang === 'en') startApp(urlLang);
+});
+</script>
+</body>
+</html>
