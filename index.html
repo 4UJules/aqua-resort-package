@@ -171,9 +171,17 @@
     <img src="logo.png" alt="Aqua Resort" class="landing-logo" id="landingLogo">
     <div class="landing-title">Aqua Resort Package</div>
     <div class="landing-subtitle" id="landingSubtitle">Choisissez votre langue · Choose your language</div>
-    <div class="lang-choice">
+    <div class="lang-choice" id="langChoice">
       <button class="lang-btn" onclick="startApp('fr')"><span class="lang-flag">🇫🇷</span>Français</button>
       <button class="lang-btn" onclick="startApp('en')"><span class="lang-flag">🇬🇧</span>English</button>
+    </div>
+    <div id="duplicateBlock" style="display:none; max-width:680px; margin:30px auto 0; padding:30px 28px; background:rgba(220,38,38,.92); border:2px solid #fca5a5; border-radius:14px; color:white; text-align:left; box-shadow:0 12px 32px rgba(0,0,0,.4);">
+      <div style="font-size:42px; text-align:center; margin-bottom:12px;">⚠️</div>
+      <div style="font-size:20px; font-weight:700; text-align:center; margin-bottom:18px;" id="dupTitle">Formulaire déjà soumis</div>
+      <div style="font-size:15px; line-height:1.6;" id="dupBody">Le formulaire a déjà été rempli pour cet appartement. Pour toute modification, veuillez contacter <b>4U Real Estate</b>.</div>
+      <div style="text-align:center; margin-top:22px;">
+        <a href="mailto:contact@4u-realestate.com?subject=Modification%20commande%20Aqua%20Resort" style="display:inline-block; padding:12px 24px; background:white; color:#991b1b; border-radius:8px; font-weight:600; text-decoration:none;">📧 Nous contacter</a>
+      </div>
     </div>
   </div>
 </div>
@@ -1088,10 +1096,48 @@ function submitForm() {
   img.src = 'aqua-bg.jpg';
 })();
 
-// If URL has lang, auto-start
+// If URL has appart, check if already submitted (block landing if yes)
+function checkDuplicate() {
+  const apt = urlParams.get('appart');
+  if (!apt || !WEBHOOK_URL || WEBHOOK_URL.indexOf('http') !== 0) return;
+  fetch(WEBHOOK_URL + '?check=' + encodeURIComponent(apt))
+    .then(r => r.json())
+    .then(res => {
+      if (res && res.exists) {
+        const langChoice = document.getElementById('langChoice');
+        const dupBlock = document.getElementById('duplicateBlock');
+        const dupTitle = document.getElementById('dupTitle');
+        const dupBody = document.getElementById('dupBody');
+        if (langChoice) langChoice.style.display = 'none';
+        if (dupBlock) {
+          dupTitle.innerHTML = '⚠️ Form already submitted / Formulaire déjà soumis';
+          dupBody.innerHTML =
+            '<b>FR :</b> Le formulaire a déjà été rempli pour l\'appartement <b>' + apt + '</b>. ' +
+            'Pour toute modification, veuillez contacter <b>4U Real Estate</b>.<br><br>' +
+            '<b>EN:</b> The form has already been submitted for apartment <b>' + apt + '</b>. ' +
+            'For any modification, please contact <b>4U Real Estate</b>.';
+          dupBlock.style.display = 'block';
+        }
+      }
+    })
+    .catch(err => console.warn('[Aqua] check error:', err));
+}
+
+// If URL has lang, auto-start (but only if NOT a duplicate)
 window.addEventListener('DOMContentLoaded', () => {
+  checkDuplicate();
   const urlLang = urlParams.get('lang');
-  if (urlLang === 'fr' || urlLang === 'en') startApp(urlLang);
+  if (urlLang === 'fr' || urlLang === 'en') {
+    // Delay startApp to give checkDuplicate time; if duplicate found, startApp won't matter
+    setTimeout(() => {
+      const apt = urlParams.get('appart');
+      if (!apt) { startApp(urlLang); return; }
+      // wait for check then decide
+      const dupBlock = document.getElementById('duplicateBlock');
+      if (dupBlock && dupBlock.style.display === 'block') return;
+      startApp(urlLang);
+    }, 1500);
+  }
 });
 </script>
 </body>
