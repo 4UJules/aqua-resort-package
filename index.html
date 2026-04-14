@@ -948,11 +948,15 @@ function printBuyList() {
 }
 
 function handleSubmitClick() {
-  alert('Bouton cliqué — démarrage de la validation…');
   if (typeof submitForm !== 'function') {
     alert('ERREUR : la fonction submitForm n\'existe pas !');
     return;
   }
+  // Disable button to prevent double-click
+  const btnA = document.getElementById('btnSubmit');
+  const btnB = document.getElementById('btnSubmitSide');
+  if (btnA) { btnA.disabled = true; btnA.textContent = '⏳ Envoi…'; }
+  if (btnB) { btnB.disabled = true; btnB.textContent = '⏳ Envoi…'; }
   submitForm();
 }
 
@@ -1039,12 +1043,25 @@ function submitForm() {
     if (WEBHOOK_URL && WEBHOOK_URL.indexOf('http') === 0) {
       fetch(WEBHOOK_URL, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload),
-      }).then(() => {
-        statusEl.className = 'send-status ok';
-        statusEl.textContent = t.ty_sent_ok || '✅ Commande enregistrée';
+        redirect: 'follow'
+      }).then(r => r.json()).then(res => {
+        if (res && res.ok) {
+          statusEl.className = 'send-status ok';
+          statusEl.textContent = t.ty_sent_ok || '✅ Commande enregistrée';
+        } else if (res && res.duplicate) {
+          // Duplicate submission - show clear message
+          statusEl.className = 'send-status ko';
+          statusEl.innerHTML = '⚠️ ' + (LANG==='en'
+            ? 'This form has already been submitted for apartment <b>'+(payload.appart||'')+'</b>. Please contact 4U Real Estate if you wish to modify your order.'
+            : 'Ce formulaire a déjà été soumis pour l\'appartement <b>'+(payload.appart||'')+'</b>. Contactez 4U Real Estate si vous souhaitez modifier votre commande.');
+          fallbackEl.style.display = 'none';
+        } else {
+          statusEl.className = 'send-status ko';
+          statusEl.textContent = (t.ty_sent_fail || 'Échec auto-save') + ' — ' + (res && res.error ? res.error : 'Erreur serveur');
+          fallbackEl.style.display = 'block';
+        }
       }).catch(err => {
         console.error('[Aqua] fetch error:', err);
         statusEl.className = 'send-status ko';
