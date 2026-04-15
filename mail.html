@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Aqua Resort - Mail preview</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 720px; margin: 30px auto; padding: 20px; color: #222; background: #f5f5f5; }
+  .wrap { background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); overflow: hidden; }
+  .header { background: #0369a1; color: white; padding: 20px 28px; }
+  .header h1 { margin: 0; font-size: 20px; }
+  .meta { padding: 16px 28px; border-bottom: 1px solid #e0e0e0; font-size: 14px; color: #555; }
+  .meta b { color: #222; }
+  .email-body { padding: 28px; line-height: 1.55; }
+  .btn-mail {
+    display: inline-block; padding: 14px 28px; background: #0369a1; color: white !important;
+    text-decoration: none; border-radius: 6px; font-weight: 600; margin: 12px 0;
+  }
+  .fr { color: #555; font-style: italic; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 22px 0; }
+  .actions { padding: 20px 28px; background: #fef3c7; border-top: 1px solid #fcd34d; }
+  .btn-copy {
+    padding: 14px 28px; background: #10b981; color: white; border: none; border-radius: 6px;
+    font-weight: 600; font-size: 15px; cursor: pointer; margin-right: 10px;
+  }
+  .btn-copy:hover { background: #059669; }
+  .btn-mailto {
+    display: inline-block; padding: 14px 28px; background: #6366f1; color: white !important;
+    text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 15px;
+  }
+  .btn-mailto:hover { background: #4f46e5; }
+  .tip { font-size: 13px; color: #92400e; margin-top: 10px; }
+  .ok-msg { color: #065f46; font-weight: 600; margin-top: 10px; display: none; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="header">
+    <h1>📧 Aperçu du mail — Aqua Resort</h1>
+  </div>
+
+  <div class="meta">
+    <b>À :</b> <span id="metaEmail">—</span><br>
+    <b>Objet :</b> <span id="metaSubject">Aqua Resort - Package appartement / apartment package</span>
+  </div>
+
+  <div id="mailBody" class="email-body">
+    <p>Hello,</p>
+    <p>Please find below the package for the rental of your apartment <b id="aptEN">—</b> at Aqua Resort.</p>
+    <p><a id="btnEN" href="#" class="btn-mail">Open my form →</a></p>
+    <p>Best regards,<br><b>4U Real Estate</b></p>
+    <hr>
+    <p class="fr">Bonjour,</p>
+    <p class="fr">Veuillez recevoir le package pour la location de votre appartement <b id="aptFR">—</b> à Aqua Resort.</p>
+    <p><a id="btnFR" href="#" class="btn-mail">Ouvrir mon formulaire →</a></p>
+    <p class="fr">Cordialement,<br><b>4U Real Estate</b></p>
+  </div>
+
+  <div class="actions">
+    <button class="btn-copy" onclick="copyMail()">📋 Copier le mail (HTML)</button>
+    <a id="mailtoLink" class="btn-mailto" href="#">📨 Ouvrir dans Outlook</a>
+    <div class="tip">💡 Clique "Copier" puis colle (Ctrl+V) dans le corps du mail Outlook — le bouton et la mise en forme seront préservés. Le "Ouvrir dans Outlook" crée juste un brouillon vide avec le destinataire et l'objet.</div>
+    <div id="okMsg" class="ok-msg">✅ Mail copié dans le presse-papier — colle-le dans Outlook (Ctrl+V)</div>
+  </div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const appart = params.get('appart') || '';
+const nom = params.get('nom') || '';
+const email = params.get('email') || '';
+const type = params.get('type') || '';
+
+const formUrl =
+  'https://4ujules.github.io/aqua-resort-package/?appart=' + encodeURIComponent(appart) +
+  '&type=' + encodeURIComponent(type) +
+  '&nom=' + encodeURIComponent(nom) +
+  '&email=' + encodeURIComponent(email);
+
+document.getElementById('metaEmail').textContent = email || '(pas d\'email)';
+document.getElementById('aptEN').textContent = appart || '—';
+document.getElementById('aptFR').textContent = appart || '—';
+document.getElementById('btnEN').href = formUrl;
+document.getElementById('btnFR').href = formUrl;
+
+const subject = 'Aqua Resort - Package appartement / apartment package';
+document.getElementById('mailtoLink').href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
+
+function copyMail() {
+  const body = document.getElementById('mailBody');
+  // Select content
+  const range = document.createRange();
+  range.selectNode(body);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  try {
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    document.getElementById('okMsg').style.display = 'block';
+    setTimeout(() => { document.getElementById('okMsg').style.display = 'none'; }, 4000);
+  } catch (e) {
+    alert('Copie non supportée, sélectionne manuellement le bloc puis Ctrl+C');
+  }
+}
+</script>
+
+</body>
+</html>
