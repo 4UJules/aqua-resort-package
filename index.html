@@ -614,14 +614,22 @@ function renderSteps() {
 
 function nameFor(a) {
   if (LANG === 'en') {
-    const key = a.name.trim();
+    // 1. Colonne "Article EN" du Sheet (prioritaire)
+    if (a.nameEn && a.nameEn.trim()) return a.nameEn.trim();
+    // 2. Traduction hardcodée historique (fallback)
+    const key = (a.name || '').trim();
     return ARTICLE_EN[key] || ARTICLE_EN[key.replace(/\s+$/,'')] || a.name;
   }
   return a.name;
 }
 
-function catFor(c) {
-  return LANG === 'en' ? (CAT_EN[c] || c) : c;
+function catFor(c, a) {
+  if (LANG === 'en') {
+    // Si l'article a une catégorie EN dans le Sheet, l'utiliser
+    if (a && a.catEn && a.catEn.trim()) return a.catEn.trim();
+    return CAT_EN[c] || c;
+  }
+  return c;
 }
 
 function getArticlesFor(category, mandatory) {
@@ -1223,10 +1231,11 @@ function submitForm() {
 })();
 
 // If URL has appart, check if already submitted (block landing if yes)
+// Returns a Promise<boolean> : true si déjà soumis
 function checkDuplicate() {
   const apt = urlParams.get('appart');
-  if (!apt || !WEBHOOK_URL || WEBHOOK_URL.indexOf('http') !== 0) return;
-  fetch(WEBHOOK_URL + '?check=' + encodeURIComponent(apt))
+  if (!apt || !WEBHOOK_URL || WEBHOOK_URL.indexOf('http') !== 0) return Promise.resolve(false);
+  return fetch(WEBHOOK_URL + '?check=' + encodeURIComponent(apt))
     .then(r => r.json())
     .then(res => {
       if (res && res.exists) {
@@ -1236,33 +1245,31 @@ function checkDuplicate() {
         const dupBody = document.getElementById('dupBody');
         if (langChoice) langChoice.style.display = 'none';
         if (dupBlock) {
-          dupTitle.innerHTML = '⚠️ Form already submitted / Formulaire déjà soumis';
+          dupTitle.innerHTML = '✅ Form already submitted / Formulaire déjà soumis';
           dupBody.innerHTML =
-            '<b>FR :</b> Le formulaire a déjà été rempli pour l\'appartement <b>' + apt + '</b>. ' +
-            'Pour toute modification, veuillez contacter <b>4U Real Estate</b>.<br><br>' +
-            '<b>EN:</b> The form has already been submitted for apartment <b>' + apt + '</b>. ' +
-            'For any modification, please contact <b>4U Real Estate</b>.';
+            '<p style="margin-bottom:14px;"><b>🇫🇷 Bonjour,</b><br>Le formulaire a déjà été rempli pour l\'appartement <b>' + apt + '</b>. '+
+            'Vous avez reçu votre récapitulatif par email.<br>Pour toute modification, contactez <b>4U Real Estate</b> : ' +
+            '<a href="mailto:management@4u-realestate.com">management@4u-realestate.com</a></p>' +
+            '<p><b>🇬🇧 Hello,</b><br>The form has already been submitted for apartment <b>' + apt + '</b>. '+
+            'You have received your summary by email.<br>For any modification, please contact <b>4U Real Estate</b>: ' +
+            '<a href="mailto:management@4u-realestate.com">management@4u-realestate.com</a></p>';
           dupBlock.style.display = 'block';
         }
+        return true;
       }
+      return false;
     })
-    .catch(err => console.warn('[Aqua] check error:', err));
+    .catch(err => { console.warn('[Aqua] check error:', err); return false; });
 }
 
 // If URL has lang, auto-start (but only if NOT a duplicate)
 window.addEventListener('DOMContentLoaded', async () => {
-  checkDuplicate();
-  // Fetch live articles list in parallel (non-blocking for landing page)
-  await loadArticlesLive();
+  // Attendre le check anti-doublon AVANT de démarrer l'app
+  const [isDup] = await Promise.all([checkDuplicate(), loadArticlesLive()]);
   const urlLang = urlParams.get('lang');
   if (urlLang === 'fr' || urlLang === 'en') {
-    setTimeout(() => {
-      const apt = urlParams.get('appart');
-      if (!apt) { startApp(urlLang); return; }
-      const dupBlock = document.getElementById('duplicateBlock');
-      if (dupBlock && dupBlock.style.display === 'block') return;
-      startApp(urlLang);
-    }, 1500);
+    if (isDup) return;  // déjà rempli → on reste sur la page de confirmation
+    startApp(urlLang);
   }
 });
 </script>
