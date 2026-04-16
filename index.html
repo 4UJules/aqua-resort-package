@@ -24,7 +24,7 @@
   .lang-flag { font-size: 22px; margin-right: 10px; }
 
   /* ===== APP ===== */
-  .app { display: none; background: linear-gradient(135deg,#e0f2fe 0%,#dbeafe 100%); min-height: 100vh; }
+  .app { display: none; background: #f5f2ed; min-height: 100vh; }
   .app.visible { display: block; }
   .container { max-width: 1400px; margin: 0 auto; padding: 24px 16px; }
   .app-body { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
@@ -32,89 +32,89 @@
   .sidebar { position: sticky; top: 20px; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(15,23,42,.08); border: 1px solid #e2e8f0; }
   .sidebar h3 { font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; font-weight: 700; }
   .sidebar .line { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; align-items: center; }
-  .sidebar .line.active { color: #0369a1; font-weight: 700; background: #f0f9ff; margin: 0 -12px; padding: 10px 12px; border-radius: 6px; border-bottom: 1px solid transparent; }
+  .sidebar .line.active { color: #4a7580; font-weight: 700; background: #f5f2ed; margin: 0 -12px; padding: 10px 12px; border-radius: 6px; border-bottom: 1px solid transparent; }
   .sidebar .line-label { color: #475569; }
   .sidebar .line-amount { font-variant-numeric: tabular-nums; font-weight: 600; color: #0f172a; }
-  .sidebar .line.active .line-label, .sidebar .line.active .line-amount { color: #0369a1; }
-  .sidebar .total-row { display: flex; justify-content: space-between; padding: 14px 0 8px; border-top: 2px solid #0369a1; margin-top: 8px; }
+  .sidebar .line.active .line-label, .sidebar .line.active .line-amount { color: #4a7580; }
+  .sidebar .total-row { display: flex; justify-content: space-between; padding: 14px 0 8px; border-top: 2px solid #4a7580; margin-top: 8px; }
   .sidebar .total-row .t-label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: .4px; font-weight: 700; }
-  .sidebar .total-row .t-amount { font-size: 22px; font-weight: 800; color: #0369a1; font-variant-numeric: tabular-nums; }
+  .sidebar .total-row .t-amount { font-size: 22px; font-weight: 800; color: #4a7580; font-variant-numeric: tabular-nums; }
   .sidebar .nav-sidebar { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
   .sidebar .nav-sidebar .btn { width: 100%; }
-  .subcat-title { font-size: 13px; color: #0369a1; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-top: 22px; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 2px solid #e0f2fe; }
+  .subcat-title { font-size: 13px; color: #4a7580; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-top: 22px; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 2px solid #d5e5e3; }
   .subcat-title:first-of-type { margin-top: 10px; }
   .submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
   .submit-text { flex: 1; min-width: 240px; }
-  .btn-xl { font-size: 17px; font-weight: 700; padding: 16px 28px; box-shadow: 0 6px 18px rgba(16,185,129,.35); letter-spacing: .3px; }
-  .btn-xl:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(16,185,129,.45); }
-  .ty-screen { text-align: center; padding: 40px 30px; background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 100%); border-radius: 16px; border: 2px solid #10b981; margin-top: 10px; animation: fadein .6s ease; }
+  .btn-xl { font-size: 17px; font-weight: 700; padding: 16px 28px; box-shadow: 0 6px 18px rgba(74,117,128,.35); letter-spacing: .3px; }
+  .btn-xl:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(74,117,128,.45); }
+  .ty-screen { text-align: center; padding: 40px 30px; background: linear-gradient(135deg, #d5e5e3 0%, #f5f2ed 100%); border-radius: 16px; border: 2px solid #4a7580; margin-top: 10px; animation: fadein .6s ease; }
   @keyframes fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   .ty-icon { font-size: 64px; margin-bottom: 10px; animation: pop .5s cubic-bezier(.34,1.56,.64,1); }
   @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
-  .ty-title { color: #059669; font-size: 28px; margin: 10px 0 14px; }
+  .ty-title { color: #4a7580; font-size: 28px; margin: 10px 0 14px; }
   .ty-text { font-size: 16px; color: #334155; margin-bottom: 24px; line-height: 1.6; }
   .ty-summary { background: white; border-radius: 10px; padding: 18px 22px; margin: 20px auto; max-width: 480px; text-align: left; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
   .ty-summary-title { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: #64748b; font-weight: 700; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
   .ty-summary-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: #475569; }
-  .ty-summary-total { border-top: 2px solid #0369a1; margin-top: 8px; padding-top: 12px; font-weight: 800; color: #0369a1; font-size: 18px; }
+  .ty-summary-total { border-top: 2px solid #4a7580; margin-top: 8px; padding-top: 12px; font-weight: 800; color: #4a7580; font-size: 18px; }
   .send-status { margin-top: 20px; padding: 12px 18px; border-radius: 8px; font-weight: 600; font-size: 14px; display: inline-block; background: #f1f5f9; color: #475569; }
   .send-status.ok { background: #d1fae5; color: #065f46; }
   .send-status.ko { background: #fee2e2; color: #991b1b; }
   .email-fallback { margin-top: 24px; padding: 18px; background: white; border-radius: 10px; border: 1px dashed #cbd5e1; max-width: 500px; margin-left: auto; margin-right: auto; }
-  .email-fallback h4 { font-size: 14px; color: #0369a1; margin-bottom: 8px; }
+  .email-fallback h4 { font-size: 14px; color: #4a7580; margin-bottom: 8px; }
   .email-fallback p { font-size: 13px; color: #64748b; margin-bottom: 12px; }
-  header.app-header { background: #0369a1; color: white; padding: 20px 24px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; align-items: center; }
-  header.app-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  header.app-header p { opacity: 0.9; font-size: 13px; }
-  .header-logo { height: 44px; }
+  header.app-header { background: #4a7580; color: white; padding: 20px 28px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  header.app-header h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; font-family: Georgia, 'Times New Roman', serif; letter-spacing: 0.5px; }
+  header.app-header p { opacity: 0.85; font-size: 13px; font-family: Georgia, 'Times New Roman', serif; }
+  .header-logo { height: 56px; }
   .steps { display: flex; justify-content: space-between; background: white; padding: 14px 20px; border-bottom: 1px solid #e2e8f0; }
   .step-item { flex: 1; text-align: center; position: relative; padding: 0 4px; }
   .step-item::after { content: ''; position: absolute; top: 14px; right: -50%; width: 100%; height: 2px; background: #e2e8f0; z-index: 0; }
   .step-item:last-child::after { display: none; }
   .step-circle { width: 28px; height: 28px; border-radius: 50%; background: #e2e8f0; color: #64748b; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; position: relative; z-index: 1; }
-  .step-item.active .step-circle { background: #0369a1; color: white; }
-  .step-item.done .step-circle { background: #10b981; color: white; }
-  .step-item.done::after { background: #10b981; }
+  .step-item.active .step-circle { background: #4a7580; color: white; }
+  .step-item.done .step-circle { background: #4a7580; color: white; }
+  .step-item.done::after { background: #4a7580; }
   .step-label { font-size: 11px; margin-top: 4px; color: #64748b; font-weight: 500; }
-  .step-item.active .step-label { color: #0369a1; font-weight: 700; }
+  .step-item.active .step-label { color: #4a7580; font-weight: 700; }
   main { background: white; padding: 32px; min-height: 400px; }
   .page { display: none; }
   .page.active { display: block; animation: fade .25s; }
   @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  h2 { font-size: 20px; color: #0369a1; margin-bottom: 8px; }
+  h2 { font-size: 20px; color: #4a7580; margin-bottom: 8px; }
   .sub { color: #64748b; font-size: 14px; margin-bottom: 20px; }
   label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; margin-top: 12px; }
   input[type=text], input[type=email], select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; font-family: inherit; }
-  input:focus, select:focus { outline: none; border-color: #0369a1; box-shadow: 0 0 0 3px rgba(3,105,161,.12); }
+  input:focus, select:focus { outline: none; border-color: #4a7580; box-shadow: 0 0 0 3px rgba(3,105,161,.12); }
   input:read-only { background: #f1f5f9; color: #475569; }
   table { width: 100%; border-collapse: collapse; margin-top: 12px; }
   th { text-align: left; font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .4px; padding: 10px 8px; border-bottom: 2px solid #e2e8f0; background: #f8fafc; }
   td { padding: 10px 8px; border-bottom: 1px solid #f1f5f9; font-size: 14px; vertical-align: middle; }
   tr:hover td { background: #fafbfc; }
   .art-name { font-weight: 500; }
-  .mandatory-tag { font-size: 10px; background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
-  .opt-tag { font-size: 10px; background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
+  .mandatory-tag { font-size: 10px; background: #d5e5e3; color: #3d6570; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
+  .opt-tag { font-size: 10px; background: #f5f0e6; color: #8a7a65; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 600; }
   .qty-input { width: 60px; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; text-align: center; font-size: 14px; }
   .qty-input:disabled { background: #f1f5f9; color: #64748b; }
   .price { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
-  .total { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; color: #0369a1; }
-  .checkbox { width: 18px; height: 18px; accent-color: #0369a1; cursor: pointer; }
-  .totals-bar { margin-top: 20px; padding: 16px 20px; background: linear-gradient(135deg,#0369a1 0%,#0284c7 100%); color: white; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .total { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; color: #4a7580; }
+  .checkbox { width: 18px; height: 18px; accent-color: #4a7580; cursor: pointer; }
+  .totals-bar { margin-top: 20px; padding: 16px 20px; background: #4a7580; color: white; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
   .totals-bar .label-sum { font-size: 13px; opacity: .9; }
   .totals-bar .amount { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
   .totals-bar .breakdown { font-size: 12px; opacity: .85; margin-top: 2px; }
   .nav { display: flex; justify-content: space-between; margin-top: 24px; gap: 12px; flex-wrap: wrap; }
   .btn { padding: 12px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; font-family: inherit; }
-  .btn-primary { background: #0369a1; color: white; }
-  .btn-primary:hover { background: #075985; }
+  .btn-primary { background: #4a7580; color: white; }
+  .btn-primary:hover { background: #3d6570; }
   .btn-secondary { background: #e2e8f0; color: #334155; }
   .btn-secondary:hover { background: #cbd5e1; }
-  .btn-success { background: #10b981; color: white; }
-  .btn-success:hover { background: #059669; }
+  .btn-success { background: #4a7580; color: white; }
+  .btn-success:hover { background: #3d6570; }
   .btn:disabled { opacity: .4; cursor: not-allowed; }
-  .section-box { background: #f8fafc; border-left: 4px solid #0369a1; padding: 14px 16px; border-radius: 6px; margin-bottom: 16px; }
-  .section-box.mandatory { border-left-color: #10b981; background: #f0fdf4; }
-  .section-box.optional { border-left-color: #f59e0b; background: #fffbeb; }
+  .section-box { background: #f8fafc; border-left: 4px solid #4a7580; padding: 14px 16px; border-radius: 6px; margin-bottom: 16px; }
+  .section-box.mandatory { border-left-color: #4a7580; background: #eef5f3; }
+  .section-box.optional { border-left-color: #c2b9aa; background: #faf8f5; }
   .section-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
   .section-desc { font-size: 13px; color: #64748b; }
   .buy-yourself-list { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
@@ -126,12 +126,12 @@
   .buy-yourself-list .btn-print:hover { background: #7f1d1d; }
   .recap-table { width: 100%; margin-top: 16px; }
   .recap-table td { padding: 8px; border-bottom: 1px solid #f1f5f9; }
-  .recap-table .recap-cat { font-weight: 700; background: #f1f5f9; color: #0369a1; }
-  .submit-block { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 20px; margin-top: 20px; text-align: center; }
-  .submit-block p { margin-bottom: 14px; font-size: 14px; color: #0c4a6e; }
+  .recap-table .recap-cat { font-weight: 700; background: #f1f5f9; color: #4a7580; }
+  .submit-block { background: #f5f2ed; border: 1px solid #d5e5e3; border-radius: 10px; padding: 20px; margin-top: 20px; text-align: center; }
+  .submit-block p { margin-bottom: 14px; font-size: 14px; color: #3d3d3d; }
   .copy-area { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: monospace; font-size: 12px; height: 80px; margin-top: 10px; resize: none; background: #f8fafc; }
-  .warning { background: #fef3c7; border: 1px solid #fcd34d; color: #92400e; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin: 10px 0; }
-  .running-total { position: fixed; bottom: 16px; right: 16px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,.15); border-radius: 12px; padding: 12px 18px; border: 2px solid #0369a1; font-weight: 700; font-size: 16px; z-index: 100; }
+  .warning { background: #f5f0e6; border: 1px solid #c2b9aa; color: #3d3d3d; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin: 10px 0; }
+  .running-total { position: fixed; bottom: 16px; right: 16px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,.15); border-radius: 12px; padding: 12px 18px; border: 2px solid #4a7580; font-weight: 700; font-size: 16px; z-index: 100; }
   .running-total small { display: block; font-size: 11px; color: #64748b; font-weight: 500; }
   .switch-lang { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; backdrop-filter: blur(8px); font-family: inherit; }
 
@@ -175,12 +175,13 @@
       <button class="lang-btn" onclick="startApp('fr')"><span class="lang-flag">🇫🇷</span>Français</button>
       <button class="lang-btn" onclick="startApp('en')"><span class="lang-flag">🇬🇧</span>English</button>
     </div>
-    <div id="duplicateBlock" style="display:none; max-width:680px; margin:30px auto 0; padding:30px 28px; background:rgba(220,38,38,.92); border:2px solid #fca5a5; border-radius:14px; color:white; text-align:left; box-shadow:0 12px 32px rgba(0,0,0,.4);">
-      <div style="font-size:42px; text-align:center; margin-bottom:12px;">⚠️</div>
-      <div style="font-size:20px; font-weight:700; text-align:center; margin-bottom:18px;" id="dupTitle">Formulaire déjà soumis</div>
-      <div style="font-size:15px; line-height:1.6;" id="dupBody">Le formulaire a déjà été rempli pour cet appartement. Pour toute modification, veuillez contacter <b>4U Real Estate</b>.</div>
-      <div style="text-align:center; margin-top:22px;">
-        <a href="mailto:management@4u-realestate.com?subject=Modification%20commande%20Aqua%20Resort" style="display:inline-block; padding:12px 24px; background:white; color:#991b1b; border-radius:8px; font-weight:600; text-decoration:none;">📧 Contact us / Nous contacter</a>
+    <div id="duplicateBlock" style="display:none; max-width:600px; margin:30px auto 0; padding:0; background:#ffffff; border-radius:8px; overflow:hidden; text-align:left; box-shadow:0 8px 30px rgba(0,0,0,.25);">
+      <div style="background:#4a7580; padding:22px 28px; text-align:center;">
+        <div style="color:#ffffff; font-size:18px; font-weight:700; letter-spacing:1px;" id="dupTitle">Formulaire déjà soumis</div>
+      </div>
+      <div style="padding:28px 32px; color:#3d3d3d; font-size:14px; line-height:1.7; font-family:Georgia,'Times New Roman',serif;" id="dupBody">Le formulaire a déjà été rempli pour cet appartement. Pour toute modification, veuillez contacter <b>4U Real Estate</b>.</div>
+      <div style="text-align:center; padding:0 32px 28px;">
+        <a href="mailto:management@4u-realestate.com?subject=Modification%20commande%20Aqua%20Resort" style="display:inline-block; padding:12px 28px; background:#4a7580; color:#ffffff; border-radius:6px; font-weight:600; text-decoration:none; font-size:14px; letter-spacing:0.5px;">Contact us / Nous contacter</a>
       </div>
     </div>
   </div>
@@ -191,11 +192,11 @@
   <div class="container">
     <header class="app-header">
       <div>
-        <h1 id="appTitle">🏖️ Aqua Resort – Package d'équipement</h1>
+        <h1 id="appTitle">Aqua Resort — Package d'équipement</h1>
         <p id="appSubtitle">Formulaire de commande des articles pour votre appartement</p>
       </div>
       <img src="logo.png" alt="Aqua Resort" class="header-logo"
-           onerror="this.style.display='none';">
+           onerror="this.parentElement.querySelector('.header-logo-fallback') || (function(el){ var s=document.createElement('span'); s.className='header-logo-fallback'; s.style.cssText='color:white;font-size:28px;font-weight:300;letter-spacing:6px;font-family:Georgia,serif;'; s.textContent='AQUA'; el.parentElement.appendChild(s); })(this); this.style.display='none';">
     </header>
 
     <div class="steps" id="stepsBar"></div>
@@ -230,7 +231,7 @@
       </div>
 
       <div class="page" data-page="1">
-        <h2>🍴 <span data-t="step_cuisine_title">Étape 1 — Cuisine</span></h2>
+        <h2><span data-t="step_cuisine_title">Étape 1 — Cuisine</span></h2>
         <p class="sub" data-t="step_cuisine_sub">Articles obligatoires fournis par la gestion pour votre cuisine.</p>
         <div class="section-box mandatory">
           <div class="section-title" data-t="pkg_mandatory">Package obligatoire</div>
@@ -240,7 +241,7 @@
       </div>
 
       <div class="page" data-page="2">
-        <h2>🛁 <span data-t="step_sdb_title">Étape 2 — Salle de bain</span></h2>
+        <h2><span data-t="step_sdb_title">Étape 2 — Salle de bain</span></h2>
         <p class="sub" data-t="step_sdb_sub">Articles obligatoires pour équiper votre salle de bain.</p>
         <div class="section-box mandatory">
           <div class="section-title" data-t="pkg_mandatory">Package obligatoire</div>
@@ -250,7 +251,7 @@
       </div>
 
       <div class="page" data-page="3">
-        <h2>🧹 <span data-t="step_menage_title">Étape 3 — Ménage</span></h2>
+        <h2><span data-t="step_menage_title">Étape 3 — Ménage</span></h2>
         <p class="sub" data-t="step_menage_sub">Articles d'entretien obligatoires.</p>
         <div class="section-box mandatory">
           <div class="section-title" data-t="pkg_mandatory">Package obligatoire</div>
@@ -260,7 +261,7 @@
       </div>
 
       <div class="page" data-page="4">
-        <h2>✨ <span data-t="step_opt_title">Étape 4 — Options (électroménager)</span></h2>
+        <h2><span data-t="step_opt_title">Étape 4 — Options (électroménager)</span></h2>
         <p class="sub" data-t="step_opt_sub">Articles optionnels. Cochez ceux que vous souhaitez que la gestion achète pour vous.</p>
         <div class="section-box optional">
           <div class="section-title" data-t="pkg_optional">Package optionnel</div>
@@ -270,7 +271,7 @@
       </div>
 
       <div class="page" data-page="5">
-        <h2>📋 <span data-t="recap_title">Récapitulatif de votre commande</span></h2>
+        <h2><span data-t="recap_title">Récapitulatif de votre commande</span></h2>
         <p class="sub" data-t="recap_sub">Vérifiez puis validez votre commande.</p>
         <div id="recapContainer"></div>
         <div class="buy-yourself-list" id="buyYourselfBlock" style="display:none;">
@@ -300,7 +301,7 @@
     </div><!-- /main-col -->
 
     <aside class="sidebar" id="sidebarTotal">
-      <h3 data-t="sidebar_title">💰 Récapitulatif</h3>
+      <h3 data-t="sidebar_title">Récapitulatif</h3>
       <div class="line" id="line-cuisine">
         <span class="line-label" data-t="sb_cuisine">Package Vaisselle</span>
         <span class="line-amount" id="amt-vaisselle">$0.00</span>
@@ -351,7 +352,7 @@ const MANAGEMENT_EMAIL = "villaturquoze@yahoo.fr";
 // ================= DATA =================
 // ARTICLES is a fallback — at page load we try to fetch the live list from the Sheet
 // via the webhook (?articles=1). If that succeeds, ARTICLES is replaced.
-let ARTICLES = [{"id": "ART001", "package": "Vaisselle", "cat": "Cuisine", "name": "epluche legume", "price": 6, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART002", "package": "Vaisselle", "cat": "Cuisine", "name": "ouvre boite", "price": 6, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART003", "package": "Vaisselle", "cat": "Cuisine", "name": "Ustensiles", "price": 15, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART004", "package": "Vaisselle", "cat": "Cuisine", "name": "couteau de cuisine", "price": 35, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART005", "package": "Vaisselle", "cat": "Cuisine", "name": "couteau à steak", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART006", "package": "Vaisselle", "cat": "Cuisine", "name": "set de table", "price": 15, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART007", "package": "Vaisselle", "cat": "Cuisine", "name": "planche a découper", "price": 12, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART008", "package": "Vaisselle", "cat": "Cuisine", "name": "distributeur produit vaiselle/lave main", "price": 30, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART009", "package": "Vaisselle", "cat": "Cuisine", "name": "saldier GM", "price": 25, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 2}, "mandatory": true}, {"id": "ART010", "package": "Vaisselle", "cat": "Cuisine", "name": "saladier MM", "price": 20, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 2}, "mandatory": true}, {"id": "ART011", "package": "Vaisselle", "cat": "Cuisine", "name": "presse ail", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART012", "package": "Vaisselle", "cat": "Cuisine", "name": "torchon vaisselle", "price": 5, "qty": {"Studio": 4, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART013", "package": "Vaisselle", "cat": "Cuisine", "name": "couverts à salade", "price": 8, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART014", "package": "Vaisselle", "cat": "Cuisine", "name": "cuillere à dessert cuillere fourchette couteau set de 4", "price": 50, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART015", "package": "Vaisselle", "cat": "Cuisine", "name": "passoire", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART016", "package": "Vaisselle", "cat": "Cuisine", "name": "range couvert", "price": 35, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART017", "package": "Vaisselle", "cat": "Cuisine", "name": "poubelle de cuisine sous évier", "price": 25, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART018", "package": "Vaisselle", "cat": "Cuisine", "name": "organiseur produits entretien sous évier", "price": 20, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART019", "package": "Vaisselle", "cat": "Cuisine", "name": "Set Poéle Induction petite moyenne grande", "price": 90, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART020", "package": "Vaisselle", "cat": "Cuisine", "name": "Set de 3 casseroles induction", "price": 45, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART021", "package": "Vaisselle", "cat": "Cuisine", "name": "plat four", "price": 55, "qty": {"Studio": 0, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART022", "package": "Vaisselle", "cat": "Cuisine", "name": "Asssietes plates", "price": 9, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART023", "package": "Vaisselle", "cat": "Cuisine", "name": "Assiettes creuses", "price": 10, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART024", "package": "Vaisselle", "cat": "Cuisine", "name": "Assiettes dessert", "price": 9, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART025", "package": "Vaisselle", "cat": "Cuisine", "name": "bol cereales", "price": 8, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART026", "package": "Vaisselle", "cat": "Cuisine", "name": "tasses expresso", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART027", "package": "Vaisselle", "cat": "Cuisine", "name": "tasses capuccino", "price": 10, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART028", "package": "Vaisselle", "cat": "Cuisine", "name": "verres eau", "price": 6, "qty": {"Studio": 4, "1Ch": 4, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART029", "package": "Vaisselle", "cat": "Cuisine", "name": "verres à pied", "price": 7, "qty": {"Studio": 4, "1Ch": 4, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART030", "package": "Vaisselle", "cat": "Cuisine", "name": "coupe champagne", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART031", "package": "Vaisselle", "cat": "Cuisine", "name": "seau champagne", "price": 40, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART032", "package": "Vaisselle", "cat": "Cuisine", "name": "Tire Bouchon", "price": 12, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART033", "package": "Vaisselle", "cat": "Cuisine", "name": "derouleur essuie tout", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART034", "package": "Vaisselle", "cat": "Cuisine", "name": "boites hermetiques nourriture (tupperware)", "price": 15, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART035", "package": "Vaisselle", "cat": "Cuisine", "name": "Porte carte Wifi", "price": 10, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART036", "package": "Vaisselle", "cat": "Cuisine", "name": "porte capsules café", "price": 15, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART037", "package": "Vaisselle", "cat": "Ménage", "name": "ensemble seau serpillere balai", "price": 30, "qty": {"Studio": 0, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART038", "package": "Vaisselle", "cat": "Ménage", "name": "cintres", "price": 20, "qty": {"Studio": 1, "1Ch": 10, "2Ch": 20, "3Ch": 30}, "mandatory": true}, {"id": "ART039", "package": "Vaisselle", "cat": "Ménage", "name": "pelle balayette", "price": 14, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART040", "package": "Vaisselle", "cat": "Salle de bain", "name": "porte savon douche +lave main", "price": 60, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART041", "package": "Vaisselle", "cat": "Salle de bain", "name": "porte savon brosse a dent salle de bain Mouchoirs", "price": 50, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART042", "package": "Option", "cat": "Électroménager", "name": "Television 55'", "price": 550, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART043", "package": "Option", "cat": "Électroménager", "name": "Television 65'", "price": 650, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART044", "package": "Option", "cat": "Électroménager", "name": "coffre evec master key unique de secours", "price": 1, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART045", "package": "Option", "cat": "Électroménager", "name": "routeurn internet", "price": 110, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART046", "package": "Option", "cat": "Électroménager", "name": "Support Mural TV", "price": 130, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART047", "package": "Option", "cat": "Électroménager", "name": "presse agrumes", "price": 45, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART048", "package": "Option", "cat": "Électroménager", "name": "machine nespresso 110V", "price": 180, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART049", "package": "Option", "cat": "Électroménager", "name": "grille pain", "price": 60, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART050", "package": "Option", "cat": "Électroménager", "name": "theiere", "price": 40, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART051", "package": "Option", "cat": "Électroménager", "name": "Defroisseur", "price": 140, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART052", "package": "Option", "cat": "Électroménager", "name": "Cafetière Classique", "price": 30, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": false}, {"id": "ART053", "package": "Option", "cat": "Électroménager", "name": "blender", "price": 80, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART054", "package": "Option", "cat": "Électroménager", "name": "micro ondes", "price": 170, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}];
+let ARTICLES = [{"id": "ART001", "package": "Vaisselle", "cat": "Cuisine", "name": "epluche legume", "price": 6, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART002", "package": "Vaisselle", "cat": "Cuisine", "name": "ouvre boite", "price": 6, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART003", "package": "Vaisselle", "cat": "Cuisine", "name": "Ustensiles", "price": 15, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART004", "package": "Vaisselle", "cat": "Cuisine", "name": "couteau de cuisine", "price": 35, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART005", "package": "Vaisselle", "cat": "Cuisine", "name": "couteau à steak", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART006", "package": "Vaisselle", "cat": "Cuisine", "name": "set de table", "price": 15, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART007", "package": "Vaisselle", "cat": "Cuisine", "name": "planche a découper", "price": 12, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART008", "package": "Vaisselle", "cat": "Cuisine", "name": "distributeur produit vaiselle/lave main", "price": 30, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART009", "package": "Vaisselle", "cat": "Cuisine", "name": "saldier GM", "price": 25, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 2}, "mandatory": true}, {"id": "ART010", "package": "Vaisselle", "cat": "Cuisine", "name": "saladier MM", "price": 20, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 2}, "mandatory": true}, {"id": "ART011", "package": "Vaisselle", "cat": "Cuisine", "name": "presse ail", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART012", "package": "Vaisselle", "cat": "Cuisine", "name": "torchon vaisselle", "price": 5, "qty": {"Studio": 4, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART013", "package": "Vaisselle", "cat": "Cuisine", "name": "couverts à salade", "price": 8, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART014", "package": "Vaisselle", "cat": "Cuisine", "name": "cuillere à dessert cuillere fourchette couteau set de 4", "price": 50, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART015", "package": "Vaisselle", "cat": "Cuisine", "name": "passoire", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART016", "package": "Vaisselle", "cat": "Cuisine", "name": "range couvert", "price": 35, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART017", "package": "Vaisselle", "cat": "Cuisine", "name": "poubelle de cuisine sous évier", "price": 25, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART018", "package": "Vaisselle", "cat": "Cuisine", "name": "organiseur produits entretien sous évier", "price": 20, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART019", "package": "Vaisselle", "cat": "Cuisine", "name": "Set Poéle Induction petite moyenne grande", "price": 90, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART020", "package": "Vaisselle", "cat": "Cuisine", "name": "Set de 3 casseroles induction", "price": 45, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART021", "package": "Vaisselle", "cat": "Cuisine", "name": "plat four", "price": 55, "qty": {"Studio": 0, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART022", "package": "Vaisselle", "cat": "Cuisine", "name": "Asssietes plates", "price": 9, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART023", "package": "Vaisselle", "cat": "Cuisine", "name": "Assiettes creuses", "price": 10, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART024", "package": "Vaisselle", "cat": "Cuisine", "name": "Assiettes dessert", "price": 9, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART025", "package": "Vaisselle", "cat": "Cuisine", "name": "bol cereales", "price": 8, "qty": {"Studio": 4, "1Ch": 6, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART026", "package": "Vaisselle", "cat": "Cuisine", "name": "tasses expresso", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART027", "package": "Vaisselle", "cat": "Cuisine", "name": "tasses capuccino", "price": 10, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART028", "package": "Vaisselle", "cat": "Cuisine", "name": "verres eau", "price": 6, "qty": {"Studio": 4, "1Ch": 4, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART029", "package": "Vaisselle", "cat": "Cuisine", "name": "verres à pied", "price": 7, "qty": {"Studio": 4, "1Ch": 4, "2Ch": 8, "3Ch": 10}, "mandatory": true}, {"id": "ART030", "package": "Vaisselle", "cat": "Cuisine", "name": "coupe champagne", "price": 6, "qty": {"Studio": 4, "1Ch": 2, "2Ch": 4, "3Ch": 6}, "mandatory": true}, {"id": "ART031", "package": "Vaisselle", "cat": "Cuisine", "name": "seau champagne", "price": 40, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART032", "package": "Vaisselle", "cat": "Cuisine", "name": "Tire Bouchon", "price": 12, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART033", "package": "Vaisselle", "cat": "Cuisine", "name": "derouleur essuie tout", "price": 10, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART034", "package": "Vaisselle", "cat": "Cuisine", "name": "boites hermetiques nourriture (tupperware)", "price": 15, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART035", "package": "Vaisselle", "cat": "Cuisine", "name": "Porte carte Wifi", "price": 10, "qty": {"Studio": 1, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART036", "package": "Vaisselle", "cat": "Cuisine", "name": "porte capsules café", "price": 15, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART037", "package": "Vaisselle", "cat": "Ménage", "name": "ensemble seau serpillere balai", "price": 30, "qty": {"Studio": 0, "1Ch": 0, "2Ch": 0, "3Ch": 0}, "mandatory": true}, {"id": "ART038", "package": "Vaisselle", "cat": "Ménage", "name": "cintres", "price": 20, "qty": {"Studio": 1, "1Ch": 10, "2Ch": 20, "3Ch": 30}, "mandatory": true}, {"id": "ART039", "package": "Vaisselle", "cat": "Ménage", "name": "pelle balayette", "price": 14, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": true}, {"id": "ART040", "package": "Vaisselle", "cat": "Salle de bain", "name": "porte savon douche +lave main", "price": 60, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART041", "package": "Vaisselle", "cat": "Salle de bain", "name": "porte savon brosse a dent salle de bain Mouchoirs", "price": 50, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 0}, "mandatory": true}, {"id": "ART042", "package": "Option", "cat": "Électroménager", "name": "Television 55'", "price": 550, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART043", "package": "Option", "cat": "Électroménager", "name": "Television 65'", "price": 650, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART044", "package": "Option", "cat": "Électroménager", "name": "coffre evec master key unique de secours", "price": 1, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART045", "package": "Option", "cat": "Électroménager", "name": "routeurn internet", "price": 110, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART046", "package": "Option", "cat": "Électroménager", "name": "Support Mural TV", "price": 130, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART047", "package": "Option", "cat": "Électroménager", "name": "presse agrumes", "price": 45, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART048", "package": "Option", "cat": "Électroménager", "name": "machine nespresso 110V", "price": 180, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART049", "package": "Option", "cat": "Électroménager", "name": "grille pain", "price": 60, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART050", "package": "Option", "cat": "Électroménager", "name": "theiere", "price": 40, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART051", "package": "Option", "cat": "Électroménager", "name": "Defroisseur", "price": 140, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART052", "package": "Option", "cat": "Électroménager", "name": "Cafetière Classique", "price": 30, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART053", "package": "Option", "cat": "Électroménager", "name": "blender", "price": 80, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}, {"id": "ART054", "package": "Option", "cat": "Électroménager", "name": "micro ondes", "price": 170, "qty": {"Studio": 1, "1Ch": 1, "2Ch": 1, "3Ch": 1}, "mandatory": false}];
 
 // Translations for article names (auto-use French if en not provided)
 const ARTICLE_EN = {
@@ -441,7 +442,7 @@ const T = {
     btn_prev: "← Précédent", btn_next: "Suivant →",
     btn_switch_lang: "🌐 Changer de langue",
     running_label: "Total en cours",
-    sidebar_title: "💰 Récapitulatif",
+    sidebar_title: "Récapitulatif",
     sb_cuisine: "Package Vaisselle", sb_sdb: "Salle de bain", sb_menage: "Ménage", sb_options: "Options",
     sb_total: "TOTAL",
     subcat_verres: "Verres", subcat_vaisselle: "Vaisselle", subcat_cuisson: "Ustensiles de cuisson", subcat_accessoires: "Accessoires",
@@ -464,7 +465,7 @@ const T = {
     no_article_cat: "Aucun article obligatoire pour cet appart dans cette catégorie.",
     no_optional: "Aucun article optionnel pour cet appart.",
     validate_msg: "Merci de renseigner le numéro et le type d'appartement.",
-    app_title: "🏖️ Aqua Resort – Package d'équipement", app_subtitle: "Formulaire de commande des articles pour votre appartement",
+    app_title: "Aqua Resort — Package d'équipement", app_subtitle: "Formulaire de commande des articles pour votre appartement",
     chosen_opts: "Options choisies (achetées par la gestion)",
     cat_mandatory_suffix: "(obligatoire)",
     submit_ready: "✅ Commande prête à être envoyée",
@@ -493,7 +494,7 @@ const T = {
     btn_prev: "← Previous", btn_next: "Next →",
     btn_switch_lang: "🌐 Change language",
     running_label: "Running total",
-    sidebar_title: "💰 Summary",
+    sidebar_title: "Summary",
     sb_cuisine: "Dishware package", sb_sdb: "Bathroom", sb_menage: "Cleaning", sb_options: "Options",
     sb_total: "TOTAL",
     subcat_verres: "Glassware", subcat_vaisselle: "Dishware", subcat_cuisson: "Cookware", subcat_accessoires: "Accessories",
@@ -516,7 +517,7 @@ const T = {
     no_article_cat: "No mandatory item for this apartment in this category.",
     no_optional: "No optional items for this apartment.",
     validate_msg: "Please fill in the apartment number and type.",
-    app_title: "🏖️ Aqua Resort – Equipment Package", app_subtitle: "Order form for your apartment equipment",
+    app_title: "Aqua Resort — Equipment Package", app_subtitle: "Order form for your apartment equipment",
     chosen_opts: "Chosen options (purchased by the management)",
     cat_mandatory_suffix: "(mandatory)",
     submit_ready: "✅ Order ready to be sent",
@@ -706,7 +707,7 @@ function renderMandatoryTable(tableId, category) {
       html += `<tr><td colspan="3" style="text-align:right; font-weight:700;">${t.subtotal_step} ${SUBCAT_LABEL[LANG][sc].replace(/^\S+\s/, '')} :</td><td class="total">${fmt(sub)}</td></tr>`;
       html += `</tbody></table>`;
     }
-    html += `<div style="margin-top:16px; text-align:right; font-weight:700; font-size:16px; color:#0369a1;">${t.subtotal_step} ${catFor(category)} : ${fmt(total)}</div>`;
+    html += `<div style="margin-top:16px; text-align:right; font-weight:700; font-size:16px; color:#4a7580;">${t.subtotal_step} ${catFor(category)} : ${fmt(total)}</div>`;
     html += `</div>`;
     container.outerHTML = html;
     return total;
@@ -766,7 +767,7 @@ function renderTvBlock() {
           <input type="radio" name="tvSize" value="65" ${ch65} ${tv65Av ? '' : 'disabled'} ${disabled}>
           ${lbl.s65} — ${tv65 ? fmt(tv65.price) : '—'}
         </label>
-        <div style="margin-top:8px; font-weight:700; color:#0369a1;">${lbl.sub} : <span id="tvSubtotal">${fmt(tvPrice)}</span></div>
+        <div style="margin-top:8px; font-weight:700; color:#4a7580;">${lbl.sub} : <span id="tvSubtotal">${fmt(tvPrice)}</span></div>
       </div>
     </div>`;
 }
@@ -1010,7 +1011,7 @@ function renderRecap() {
   const grand = mandTotal + optTotal;
 
   const cats = ["Cuisine", "Salle de bain", "Ménage"];
-  let html = `<div style="background:#f0f9ff; padding:14px 18px; border-radius:10px; margin-bottom:14px;">
+  let html = `<div style="background:#f5f2ed; padding:14px 18px; border-radius:10px; margin-bottom:14px;">
     <b>${LANG==='en'?'Apartment':'Appartement'} :</b> ${state.apartId} (${type}) &nbsp;|&nbsp;
     <b>${LANG==='en'?'Name':'Nom'} :</b> ${state.clientName || '—'} &nbsp;|&nbsp;
     <b>Email :</b> ${state.clientEmail || '—'}
@@ -1024,19 +1025,16 @@ function renderRecap() {
     const catTotal = items.reduce((s, a) => s + (a.qty[type] || 0) * a.price, 0);
     html += `<tr class="recap-cat"><td colspan="3">${catFor(cat)} ${t.cat_mandatory_suffix}</td><td class="total">${fmt(catTotal)}</td></tr>`;
   }
-  // Options choisies : détail ligne par ligne, ou message si aucune
+  // Options choisies : total sur la ligne catégorie, détail en dessous si présent
+  html += `<tr class="recap-cat"><td colspan="3">${t.chosen_opts}</td><td class="total">${fmt(optTotal)}</td></tr>`;
   if (optChosen.length > 0) {
-    html += `<tr class="recap-cat"><td colspan="4">${t.chosen_opts}</td></tr>`;
     for (const a of optChosen) {
       const qty = state.selections[a.id];
       html += `<tr><td>${nameFor(a)}</td><td>${t.th_qty} ${qty}</td><td class="price">${fmt(a.price)}</td><td class="total">${fmt(qty * a.price)}</td></tr>`;
     }
   } else {
-    html += `<tr class="recap-cat"><td colspan="4">${t.chosen_opts}</td></tr>`;
     html += `<tr><td colspan="4" style="padding:14px 16px; background:#fff7ed; color:#9a3412; font-style:italic; border-left:3px solid #f97316;">⚠️ ${t.no_option_msg}</td></tr>`;
   }
-  html += `<tr><td colspan="3" style="text-align:right; font-weight:700; padding-top:12px;">${t.mandatory_subtotal}</td><td class="total" style="padding-top:12px;">${fmt(mandTotal)}</td></tr>`;
-  html += `<tr><td colspan="3" style="text-align:right; font-weight:700;">${t.optional_subtotal}</td><td class="total">${fmt(optTotal)}</td></tr>`;
   html += `</tbody></table>`;
   document.getElementById('recapContainer').innerHTML = html;
 
@@ -1047,13 +1045,7 @@ function renderRecap() {
     document.getElementById('buyYourselfBlock').style.display = 'none';
   }
   document.getElementById('finalTotal').textContent = fmt(grand);
-  document.getElementById('finalBreakdown').textContent = `${t.mandatory_subtotal} : ${fmt(mandTotal)} + ${t.optional_subtotal} : ${fmt(optTotal)}`;
-  // Breakdown sous le TOTAL dans la sidebar
-  const sbBd = document.getElementById('sbBreakdown');
-  if (sbBd) {
-    sbBd.style.display = 'block';
-    sbBd.innerHTML = `${t.mandatory_subtotal} : ${fmt(mandTotal)}<br>${t.optional_subtotal} : ${fmt(optTotal)}`;
-  }
+  document.getElementById('finalBreakdown').textContent = '';
   // Bouton validation sidebar avec numéro d'appartement
   const btnSide = document.getElementById('btnSubmitSide');
   if (btnSide) {
@@ -1067,11 +1059,11 @@ function printBuyList() {
   const w = window.open('', '_blank');
   w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${t.print_title}</title>
     <style>body{font-family:Arial,sans-serif;padding:40px;max-width:700px;margin:0 auto;color:#111;}
-    h1{color:#0369a1;border-bottom:2px solid #0369a1;padding-bottom:10px;}
+    h1{color:#4a7580;border-bottom:2px solid #4a7580;padding-bottom:10px;}
     .info{background:#f1f5f9;padding:12px;border-radius:6px;margin:18px 0;font-size:14px;}
     ul{list-style:none;padding:0;}
     li{padding:10px 0;border-bottom:1px dashed #cbd5e1;font-size:15px;}
-    li::before{content:"☐ ";color:#0369a1;font-weight:700;}
+    li::before{content:"☐ ";color:#4a7580;font-weight:700;}
     .footer{margin-top:30px;font-size:12px;color:#64748b;}
     </style></head><body>
     <h1>${t.print_title}</h1>
@@ -1245,14 +1237,22 @@ function checkDuplicate() {
         const dupBody = document.getElementById('dupBody');
         if (langChoice) langChoice.style.display = 'none';
         if (dupBlock) {
-          dupTitle.innerHTML = '✅ Form already submitted / Formulaire déjà soumis';
+          dupTitle.innerHTML = '<span style="color:#e05555; font-weight:700;">&#9888; Form already submitted !</span><span style="color:rgba(255,255,255,.6); font-size:14px; display:block; margin-top:4px;">Formulaire d\u00e9j\u00e0 soumis</span>';
           dupBody.innerHTML =
-            '<p style="margin-bottom:14px;"><b>🇫🇷 Bonjour,</b><br>Le formulaire a déjà été rempli pour l\'appartement <b>' + apt + '</b>. '+
-            'Vous avez reçu votre récapitulatif par email.<br>Pour toute modification, contactez <b>4U Real Estate</b> : ' +
-            '<a href="mailto:management@4u-realestate.com">management@4u-realestate.com</a></p>' +
-            '<p><b>🇬🇧 Hello,</b><br>The form has already been submitted for apartment <b>' + apt + '</b>. '+
-            'You have received your summary by email.<br>For any modification, please contact <b>4U Real Estate</b>: ' +
-            '<a href="mailto:management@4u-realestate.com">management@4u-realestate.com</a></p>';
+            '<div style="border-bottom:1px solid #d5e5e3; padding-bottom:16px; margin-bottom:16px;">' +
+            '<div style="color:#4a7580; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">English</div>' +
+            '<p style="margin:0;">The form has already been submitted for apartment <b style="color:#4a7580;">' + apt + '</b>. ' +
+            'You have received your summary by email.</p>' +
+            '<p style="margin:8px 0 0; color:#9a9080;">For any modification, please contact <b>4U Real Estate</b>: ' +
+            '<a href="mailto:management@4u-realestate.com" style="color:#4a7580;">management@4u-realestate.com</a></p>' +
+            '</div>' +
+            '<div>' +
+            '<div style="color:#4a7580; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Fran\u00e7ais</div>' +
+            '<p style="margin:0;">Le formulaire a d\u00e9j\u00e0 \u00e9t\u00e9 rempli pour l\u2019appartement <b style="color:#4a7580;">' + apt + '</b>. ' +
+            'Vous avez re\u00e7u votre r\u00e9capitulatif par email.</p>' +
+            '<p style="margin:8px 0 0; color:#9a9080;">Pour toute modification, contactez <b>4U Real Estate</b> : ' +
+            '<a href="mailto:management@4u-realestate.com" style="color:#4a7580;">management@4u-realestate.com</a></p>' +
+            '</div>';
           dupBlock.style.display = 'block';
         }
         return true;
